@@ -1,0 +1,33 @@
+[
+  {
+    "param_text": "20:30:50",
+    "result": {
+      "hour_field": 20,
+      "minute_field": 30,
+      "second_field": 50,
+      "nano_field": 0
+    }
+  },
+  {
+    "param_text": "20:30:50.12345",
+    "result": {
+      "hour_field": 20,
+      "minute_field": 30,
+      "second_field": 50,
+      "nano_field": 123450000
+    }
+  },
+  {
+    "param_text": "00:00:00.999999999",
+    "result": {
+      "hour_field": 0,
+      "minute_field": 0,
+      "second_field": 0,
+      "nano_field": 999999999
+    }
+  },
+  {
+    "param_text": null,
+    "result": null
+  }
+]

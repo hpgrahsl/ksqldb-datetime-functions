@@ -1,0 +1,21 @@
+[
+  {
+    "param_hour": 20,
+    "param_minute": 30,
+    "param_second": 50,
+    "param_nano": 1000,
+    "result": {
+      "hour_field": 20,
+      "minute_field": 30,
+      "second_field": 50,
+      "nano_field": 1000
+    }
+  },
+  {
+    "param_hour": null,
+    "param_minute": null,
+    "param_second": null,
+    "param_nano": null,
+    "result": null
+  }
+]

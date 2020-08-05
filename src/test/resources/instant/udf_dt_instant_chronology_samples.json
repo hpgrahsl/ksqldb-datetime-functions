@@ -1,0 +1,158 @@
+[
+  {
+    "param_baseInstant": {
+      "seconds_field": 0,
+      "nanos_field": 0
+    },
+    "param_instant": {
+      "seconds_field": 1596037441,
+      "nanos_field": 0
+    },
+    "param_chronologyMode": "IS_AFTER",
+    "result": true
+  },
+  {
+    "param_baseInstant": {
+      "seconds_field": 0,
+      "nanos_field": 0
+    },
+    "param_instant": {
+      "seconds_field": 1596037441,
+      "nanos_field": 0
+    },
+    "param_chronologyMode": "IS_BEFORE",
+    "result": false
+  },
+  {
+    "param_baseInstant": {
+      "seconds_field": 0,
+      "nanos_field": 0
+    },
+    "param_instant": {
+      "seconds_field": 1596037441,
+      "nanos_field": 0
+    },
+    "param_chronologyMode": "IS_EQUAL",
+    "result": false
+  },
+  {
+    "param_baseInstant": {
+      "seconds_field": 1596037441,
+      "nanos_field": 0
+    },
+    "param_instant": {
+      "seconds_field": 0,
+      "nanos_field": 0
+    },
+    "param_chronologyMode": "IS_AFTER",
+    "result": false
+  },
+  {
+    "param_baseInstant": {
+      "seconds_field": 1596037441,
+      "nanos_field": 0
+    },
+    "param_instant": {
+      "seconds_field": 0,
+      "nanos_field": 0
+    },
+    "param_chronologyMode": "IS_BEFORE",
+    "result": true
+  },
+  {
+    "param_baseInstant": {
+      "seconds_field": 1596037441,
+      "nanos_field": 0
+    },
+    "param_instant": {
+      "seconds_field": 0,
+      "nanos_field": 0
+    },
+    "param_chronologyMode": "IS_EQUAL",
+    "result": false
+  },
+  {
+    "param_baseInstant": {
+      "seconds_field": 1596037441,
+      "nanos_field": 111222333
+    },
+    "param_instant": {
+      "seconds_field": 1596037441,
+      "nanos_field": 111222333
+    },
+    "param_chronologyMode": "IS_AFTER",
+    "result": false
+  },
+  {
+    "param_baseInstant": {
+      "seconds_field": 1596037441,
+      "nanos_field": 111222333
+    },
+    "param_instant": {
+      "seconds_field": 1596037441,
+      "nanos_field": 111222333
+    },
+    "param_chronologyMode": "IS_BEFORE",
+    "result": false
+  },
+  {
+    "param_baseInstant": {
+      "seconds_field": 1596037441,
+      "nanos_field": 111222333
+    },
+    "param_instant": {
+      "seconds_field": 1596037441,
+      "nanos_field": 111222333
+    },
+    "param_chronologyMode": "IS_EQUAL",
+    "result": true
+  },
+  {
+    "param_baseInstant": null,
+    "param_instant": {
+      "seconds_field": 0,
+      "nanos_field": 0
+    },
+    "param_chronologyMode": "IS_AFTER",
+    "result": null
+  },
+  {
+    "param_baseInstant": {
+      "seconds_field": 0,
+      "nanos_field": 0
+    },
+    "param_instant": null,
+    "param_chronologyMode": "IS_BEFORE",
+    "result": null
+  },
+  {
+    "param_baseInstant": null,
+    "param_instant": null,
+    "param_chronologyMode": "IS_EQUAL",
+    "result": null
+  },
+  {
+    "param_baseInstant": {
+      "seconds_field": 0,
+      "nanos_field": 0
+    },
+    "param_instant": {
+      "seconds_field": 0,
+      "nanos_field": 0
+    },
+    "param_chronologyMode": "ILLEGAL",
+    "result": null
+  },
+  {
+    "param_baseInstant": {
+      "seconds_field": 0,
+      "nanos_field": 0
+    },
+    "param_instant": {
+      "seconds_field": 0,
+      "nanos_field": 0
+    },
+    "param_chronologyMode": null,
+    "result": null
+  }
+]

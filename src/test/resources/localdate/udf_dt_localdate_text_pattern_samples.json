@@ -1,0 +1,44 @@
+[
+  {
+    "param_text": "1970-01-01",
+    "param_pattern": "yyyy-MM-dd",
+    "result": {
+      "year_field": 1970,
+      "month_field": 1,
+      "day_field": 1
+    }
+  },
+  {
+    "param_text": "2003/10/20",
+    "param_pattern": "yyyy/MM/dd",
+    "result": {
+      "year_field": 2003,
+      "month_field": 10,
+      "day_field": 20
+    }
+  },
+  {
+    "param_text": "22.03.2034",
+    "param_pattern": "dd.MM.yyyy",
+    "result": {
+      "year_field": 2034,
+      "month_field": 3,
+      "day_field": 22
+    }
+  },
+  {
+    "param_text": null,
+    "param_pattern": "dd.MM.YYYY",
+    "result": null
+  },
+  {
+    "param_text": "22.03.2034",
+    "param_pattern": null,
+    "result": null
+  },
+  {
+    "param_text": null,
+    "param_pattern": null,
+    "result": null
+  }
+]

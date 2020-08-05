@@ -1,0 +1,30 @@
+[
+  {
+    "param_epochdays": 0,
+    "result": {
+      "year_field": 1970,
+      "month_field": 1,
+      "day_field": 1
+    }
+  },
+  {
+    "param_epochdays": 12345,
+    "result": {
+      "year_field": 2003,
+      "month_field": 10,
+      "day_field": 20
+    }
+  },
+  {
+    "param_epochdays": 23456,
+    "result": {
+      "year_field": 2034,
+      "month_field": 3,
+      "day_field": 22
+    }
+  },
+  {
+    "param_epochdays": null,
+    "result": null
+  }
+]

@@ -1,0 +1,76 @@
+[
+  {
+    "param_year": 1970,
+    "param_month": 1,
+    "param_day": 1,
+    "param_hour": 0,
+    "param_minute": 0,
+    "param_second": 0,
+    "param_nano": 0,
+    "result": {
+      "localdate_field": {
+        "year_field": 1970,
+        "month_field": 1,
+        "day_field": 1
+      },
+      "localtime_field": {
+        "hour_field": 0,
+        "minute_field": 0,
+        "second_field": 0,
+        "nano_field": 0
+      }
+    }
+  },
+  {
+    "param_year": 2020,
+    "param_month": 8,
+    "param_day": 4,
+    "param_hour": 20,
+    "param_minute": 30,
+    "param_second": 50,
+    "param_nano": 1000,
+    "result": {
+      "localdate_field": {
+        "year_field": 2020,
+        "month_field": 8,
+        "day_field": 4
+      },
+      "localtime_field": {
+        "hour_field": 20,
+        "minute_field": 30,
+        "second_field": 50,
+        "nano_field": 1000
+      }
+    }
+  },
+  {
+    "param_year": null,
+    "param_month": null,
+    "param_day": null,
+    "param_hour": 0,
+    "param_minute": 0,
+    "param_second": 0,
+    "param_nano": 0,
+    "result": null
+  },
+  {
+    "param_year": 2020,
+    "param_month": 8,
+    "param_day": 4,
+    "param_hour": null,
+    "param_minute": null,
+    "param_second": null,
+    "param_nano": null,
+    "result": null
+  },
+  {
+    "param_year": null,
+    "param_month": null,
+    "param_day": null,
+    "param_hour": null,
+    "param_minute": null,
+    "param_second": null,
+    "param_nano": null,
+    "result": null
+  }
+]

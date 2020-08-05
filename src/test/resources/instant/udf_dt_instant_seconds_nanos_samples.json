@@ -1,0 +1,41 @@
+[
+  {
+    "param_seconds": 0,
+    "param_nanos": 0,
+    "result": {
+      "seconds_field": 0,
+      "nanos_field": 0
+    }
+  },
+  {
+    "param_seconds": 1596021213,
+    "param_nanos": 0,
+    "result": {
+      "seconds_field": 1596021213,
+      "nanos_field": 0
+    }
+  },
+  {
+    "param_seconds": 1596021213,
+    "param_nanos": 999000000,
+    "result": {
+      "seconds_field": 1596021213,
+      "nanos_field": 999000000
+    }
+  },
+  {
+    "param_seconds": null,
+    "param_nanos": 999000000,
+    "result": null
+  },
+  {
+    "param_seconds": 1596021213,
+    "param_nanos": null,
+    "result": null
+  },
+  {
+    "param_seconds": null,
+    "param_nanos": null,
+    "result": null
+  }
+]

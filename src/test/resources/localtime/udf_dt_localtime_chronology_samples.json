@@ -1,0 +1,206 @@
+[
+  {
+    "param_baseLocalTime": {
+      "hour_field": 12,
+      "minute_field": 0,
+      "second_field": 0,
+      "nano_field": 0
+    },
+    "param_localTime": {
+      "hour_field": 20,
+      "minute_field": 30,
+      "second_field": 50,
+      "nano_field": 0
+    },
+    "param_chronologyMode": "IS_AFTER",
+    "result": true
+  },
+  {
+    "param_baseLocalTime": {
+      "hour_field": 12,
+      "minute_field": 0,
+      "second_field": 0,
+      "nano_field": 0
+    },
+    "param_localTime": {
+      "hour_field": 20,
+      "minute_field": 30,
+      "second_field": 50,
+      "nano_field": 0
+    },
+    "param_chronologyMode": "IS_BEFORE",
+    "result": false
+  },
+  {
+    "param_baseLocalTime": {
+      "hour_field": 12,
+      "minute_field": 0,
+      "second_field": 0,
+      "nano_field": 0
+    },
+    "param_localTime": {
+      "hour_field": 20,
+      "minute_field": 30,
+      "second_field": 50,
+      "nano_field": 0
+    },
+    "param_chronologyMode": "IS_EQUAL",
+    "result": false
+  },
+  {
+    "param_baseLocalTime": {
+      "hour_field": 12,
+      "minute_field": 0,
+      "second_field": 0,
+      "nano_field": 0
+    },
+    "param_localTime": {
+      "hour_field": 0,
+      "minute_field": 0,
+      "second_field": 0,
+      "nano_field": 0
+    },
+    "param_chronologyMode": "IS_AFTER",
+    "result": false
+  },
+  {
+    "param_baseLocalTime": {
+      "hour_field": 12,
+      "minute_field": 0,
+      "second_field": 0,
+      "nano_field": 0
+    },
+    "param_localTime": {
+      "hour_field": 0,
+      "minute_field": 0,
+      "second_field": 0,
+      "nano_field": 0
+    },
+    "param_chronologyMode": "IS_BEFORE",
+    "result": true
+  },
+  {
+    "param_baseLocalTime": {
+      "hour_field": 12,
+      "minute_field": 0,
+      "second_field": 0,
+      "nano_field": 0
+    },
+    "param_localTime": {
+      "hour_field": 0,
+      "minute_field": 0,
+      "second_field": 0,
+      "nano_field": 0
+    },
+    "param_chronologyMode": "IS_EQUAL",
+    "result": false
+  },
+  {
+    "param_baseLocalTime": {
+      "hour_field": 15,
+      "minute_field": 15,
+      "second_field": 15,
+      "nano_field": 777888999
+    },
+    "param_localTime": {
+      "hour_field": 15,
+      "minute_field": 15,
+      "second_field": 15,
+      "nano_field": 777888999
+    },
+    "param_chronologyMode": "IS_AFTER",
+    "result": false
+  },
+  {
+    "param_baseLocalTime": {
+      "hour_field": 15,
+      "minute_field": 15,
+      "second_field": 15,
+      "nano_field": 777888999
+    },
+    "param_localTime": {
+      "hour_field": 15,
+      "minute_field": 15,
+      "second_field": 15,
+      "nano_field": 777888999
+    },
+    "param_chronologyMode": "IS_BEFORE",
+    "result": false
+  },
+  {
+    "param_baseLocalTime": {
+      "hour_field": 15,
+      "minute_field": 15,
+      "second_field": 15,
+      "nano_field": 777888999
+    },
+    "param_localTime": {
+      "hour_field": 15,
+      "minute_field": 15,
+      "second_field": 15,
+      "nano_field": 777888999
+    },
+    "param_chronologyMode": "IS_EQUAL",
+    "result": true
+  },
+  {
+    "param_baseLocalTime": null,
+    "param_localTime": {
+      "hour_field": 15,
+      "minute_field": 15,
+      "second_field": 15,
+      "nano_field": 777888999
+    },
+    "param_chronologyMode": "IS_AFTEr",
+    "result": null
+  },
+  {
+    "param_baseLocalTime": {
+      "hour_field": 15,
+      "minute_field": 15,
+      "second_field": 15,
+      "nano_field": 777888999
+    },
+    "param_localTime": null,
+    "param_chronologyMode": "IS_BEFORE",
+    "result": null
+  },
+  {
+    "param_baseLocalTime": null,
+    "param_localTime": null,
+    "param_chronologyMode": "IS_EQUAL",
+    "result": null
+  },
+  {
+    "param_baseLocalTime": {
+      "hour_field": 15,
+      "minute_field": 15,
+      "second_field": 15,
+      "nano_field": 777888999
+    },
+    "param_localTime": {
+      "hour_field": 15,
+      "minute_field": 15,
+      "second_field": 15,
+      "nano_field": 777888999
+    },
+    "param_chronologyMode": "ILLEGAL",
+    "result": null
+  },
+  {
+    "param_baseLocalTime": {
+      "hour_field": 0,
+      "minute_field": 0,
+      "second_field": 0,
+      "nano_field": 0
+    },
+    "param_localTime": {
+      "hour_field": 0,
+      "minute_field": 0,
+      "second_field": 0,
+      "nano_field": 0
+    },
+    "param_chronologyMode": null,
+    "result": null
+  }
+]

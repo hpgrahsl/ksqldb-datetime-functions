@@ -1,0 +1,38 @@
+[
+  {
+    "param_epochmillis": 0,
+    "result": {
+      "localdate_field": {
+        "year_field": 1970,
+        "month_field": 1,
+        "day_field": 1
+      },
+      "localtime_field": {
+        "hour_field": 0,
+        "minute_field": 0,
+        "second_field": 0,
+        "nano_field": 0
+      }
+    }
+  },
+  {
+    "param_epochmillis": 1596573050000,
+    "result": {
+      "localdate_field": {
+        "year_field": 2020,
+        "month_field": 8,
+        "day_field": 4
+      },
+      "localtime_field": {
+        "hour_field": 20,
+        "minute_field": 30,
+        "second_field": 50,
+        "nano_field": 0
+      }
+    }
+  },
+  {
+    "param_epochmillis": null,
+    "result": null
+  }
+]

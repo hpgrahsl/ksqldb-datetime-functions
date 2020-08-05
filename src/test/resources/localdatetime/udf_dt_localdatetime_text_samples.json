@@ -1,0 +1,38 @@
+[
+  {
+    "param_text": "1970-01-01T00:00:00.000000000",
+    "result": {
+      "localdate_field": {
+        "year_field": 1970,
+        "month_field": 1,
+        "day_field": 1
+      },
+      "localtime_field": {
+        "hour_field": 0,
+        "minute_field": 0,
+        "second_field": 0,
+        "nano_field": 0
+      }
+    }
+  },
+  {
+    "param_text": "2020-07-28T19:37:33.899041",
+    "result": {
+      "localdate_field": {
+        "year_field": 2020,
+        "month_field": 7,
+        "day_field": 28
+      },
+      "localtime_field": {
+        "hour_field": 19,
+        "minute_field": 37,
+        "second_field": 33,
+        "nano_field": 899041000
+      }
+    }
+  },
+  {
+    "param_text": null,
+    "result": null
+  }
+]

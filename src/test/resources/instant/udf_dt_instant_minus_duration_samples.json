@@ -1,0 +1,65 @@
+[
+  {
+    "param_instant": {
+      "seconds_field": 1250000000,
+      "nanos_field": 0
+    },
+    "param_duration": {
+      "seconds_field": 625000000,
+      "nanos_field": 0
+    },
+    "result": {
+      "seconds_field": 625000000,
+      "nanos_field": 0
+    }
+  },
+  {
+    "param_instant": {
+      "seconds_field": 625000000,
+      "nanos_field": 123456789
+    },
+    "param_duration": {
+      "seconds_field": 625000000,
+      "nanos_field": 123456789
+    },
+    "result": {
+      "seconds_field": 0,
+      "nanos_field": 0
+    }
+  },
+  {
+    "param_instant": {
+      "seconds_field": 625000000,
+      "nanos_field": 123456789
+    },
+    "param_duration": {
+      "seconds_field": 625000000,
+      "nanos_field": 0
+    },
+    "result": {
+      "seconds_field": 0,
+      "nanos_field": 123456789
+    }
+  },
+  {
+    "param_instant":  null,
+    "param_duration": {
+      "seconds_field": 625000000,
+      "nanos_field": 123456789
+    },
+    "result": null
+  },
+  {
+    "param_instant": {
+      "seconds_field": 625000000,
+      "nanos_field": 123456789
+    },
+    "param_duration": null,
+    "result": null
+  },
+  {
+    "param_instant": null,
+    "param_duration": null,
+    "result": null
+  }
+]

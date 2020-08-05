@@ -1,0 +1,76 @@
+[
+  {
+    "param_localDateFrom": {
+      "year_field": 1970,
+      "month_field": 1,
+      "day_field": 1
+    },
+    "param_localDateTo": {
+      "year_field": 2020,
+      "month_field": 8,
+      "day_field": 3
+    },
+    "result": {
+      "years_field": 50,
+      "months_field": 7,
+      "days_field": 2
+    }
+  },
+  {
+    "param_localDateFrom": {
+      "year_field": 1970,
+      "month_field": 1,
+      "day_field": 1
+    },
+    "param_localDateTo": {
+      "year_field": 1969,
+      "month_field": 7,
+      "day_field": 20
+    },
+    "result": {
+      "years_field": 0,
+      "months_field": -5,
+      "days_field": -12
+    }
+  },
+  {
+    "param_localDateFrom": {
+      "year_field": 2020,
+      "month_field": 8,
+      "day_field": 3
+    },
+    "param_localDateTo": {
+      "year_field": 1983,
+      "month_field": 7,
+      "day_field": 31
+    },
+    "result": {
+      "years_field": -37,
+      "months_field": 0,
+      "days_field": -3
+    }
+  },
+  {
+    "param_localDateFrom": {
+      "year_field": 2020,
+      "month_field": 8,
+      "day_field": 3
+    },
+    "param_localDateTo": null,
+    "result": null
+  },
+  {
+    "param_localDateFrom": null,
+    "param_localDateTo": {
+      "year_field": 1983,
+      "month_field": 7,
+      "day_field": 31
+    },
+    "result": null
+  },
+  {
+    "param_localDateFrom": null,
+    "param_localDateTo": null,
+    "result": null
+  }
+]

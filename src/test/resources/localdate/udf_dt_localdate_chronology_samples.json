@@ -1,0 +1,174 @@
+[
+  {
+    "param_baseLocalDate": {
+      "year_field": 1970,
+      "month_field": 1,
+      "day_field": 1
+    },
+    "param_localDate": {
+      "year_field": 2020,
+      "month_field": 8,
+      "day_field": 4
+    },
+    "param_chronologyMode": "IS_AFTER",
+    "result": true
+  },
+  {
+    "param_baseLocalDate": {
+      "year_field": 1970,
+      "month_field": 1,
+      "day_field": 1
+    },
+    "param_localDate": {
+      "year_field": 2020,
+      "month_field": 8,
+      "day_field": 4
+    },
+    "param_chronologyMode": "IS_BEFORE",
+    "result": false
+  },
+  {
+    "param_baseLocalDate": {
+      "year_field": 1970,
+      "month_field": 1,
+      "day_field": 1
+    },
+    "param_localDate": {
+      "year_field": 2020,
+      "month_field": 8,
+      "day_field": 4
+    },
+    "param_chronologyMode": "IS_EQUAL",
+    "result": false
+  },
+  {
+    "param_baseLocalDate": {
+      "year_field": 2020,
+      "month_field": 8,
+      "day_field": 4
+    },
+    "param_localDate": {
+      "year_field": 1970,
+      "month_field": 1,
+      "day_field": 1
+    },
+    "param_chronologyMode": "IS_AFTER",
+    "result": false
+  },
+  {
+    "param_baseLocalDate": {
+      "year_field": 2020,
+      "month_field": 8,
+      "day_field": 4
+    },
+    "param_localDate": {
+      "year_field": 1970,
+      "month_field": 1,
+      "day_field": 1
+    },
+    "param_chronologyMode": "IS_BEFORE",
+    "result": true
+  },
+  {
+    "param_baseLocalDate": {
+      "year_field": 2020,
+      "month_field": 8,
+      "day_field": 4
+    },
+    "param_localDate": {
+      "year_field": 1970,
+      "month_field": 1,
+      "day_field": 1
+    },
+    "param_chronologyMode": "IS_EQUAL",
+    "result": false
+  },
+  {
+    "param_baseLocalDate": {
+      "year_field": 1983,
+      "month_field": 7,
+      "day_field": 31
+    },
+    "param_localDate": {
+      "year_field": 1983,
+      "month_field": 7,
+      "day_field": 31
+    },
+    "param_chronologyMode": "IS_AFTER",
+    "result": false
+  },
+  {
+    "param_baseLocalDate": {
+      "year_field": 1983,
+      "month_field": 7,
+      "day_field": 31
+    },
+    "param_localDate": {
+      "year_field": 1983,
+      "month_field": 7,
+      "day_field": 31
+    },
+    "param_chronologyMode": "IS_BEFORE",
+    "result": false
+  },
+  {
+    "param_baseLocalDate": {
+      "year_field": 1983,
+      "month_field": 7,
+      "day_field": 31
+    },
+    "param_localDate": {
+      "year_field": 1983,
+      "month_field": 7,
+      "day_field": 31
+    },
+    "param_chronologyMode": "IS_EQUAL",
+    "result": true
+  },
+  {
+    "param_baseLocalDate": null,
+    "param_localDate": {
+      "year_field": 1970,
+      "month_field": 1,
+      "day_field": 1
+    },
+    "param_chronologyMode": "IS_AFTER",
+    "result": null
+  },
+  {
+    "param_baseLocalDate": {
+      "year_field": 1970,
+      "month_field": 1,
+      "day_field": 1
+    },
+    "param_localDate": null,
+    "param_chronologyMode": "IS_BEFORE",
+    "result": null
+  },
+  {
+    "param_baseLocalDate": null,
+    "param_localDate": null,
+    "param_chronologyMode": "IS_EQUAL",
+    "result": null
+  },
+  {
+    "param_baseLocalDate": {
+      "year_field": 1983,
+      "month_field": 7,
+      "day_field": 31
+    },
+    "param_localDate": {
+      "year_field": 1983,
+      "month_field": 7,
+      "day_field": 31
+    },
+    "param_chronologyMode": "ILLEGAL",
+    "result": null
+  },
+  {
+    "param_baseLocalDate": null,
+    "param_localDate": null,
+    "param_chronologyMode": null,
+    "result": null
+  }
+]

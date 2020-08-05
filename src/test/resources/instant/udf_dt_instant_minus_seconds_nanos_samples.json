@@ -1,0 +1,89 @@
+[
+  {
+    "param_instant": {
+      "seconds_field": 1250000000,
+      "nanos_field": 0
+    },
+    "param_seconds": 625000000,
+    "param_nanos": 0,
+    "result": {
+      "seconds_field": 625000000,
+      "nanos_field": 0
+    }
+  },
+  {
+    "param_instant": {
+      "seconds_field": 625000000,
+      "nanos_field": 123456789
+    },
+    "param_seconds": 625000000,
+    "param_nanos": 123456789,
+    "result": {
+      "seconds_field": 0,
+      "nanos_field": 0
+    }
+  },
+  {
+    "param_instant": {
+      "seconds_field": 625000000,
+      "nanos_field": 123456789
+    },
+    "param_seconds": 625000000,
+    "param_nanos": 0,
+    "result": {
+      "seconds_field": 0,
+      "nanos_field": 123456789
+    }
+  },
+  {
+    "param_instant": null,
+    "param_seconds": 625000000,
+    "param_nanos": 0,
+    "result": null
+  },
+  {
+    "param_instant": {
+      "seconds_field": 625000000,
+      "nanos_field": 123456789
+    },
+    "param_seconds": null,
+    "param_nanos": 0,
+    "result": null
+  },
+  {
+    "param_instant": {
+      "seconds_field": 625000000,
+      "nanos_field": 123456789
+    },
+    "param_seconds": 0,
+    "param_nanos": null,
+    "result": null
+  },
+  {
+    "param_instant": null,
+    "param_seconds": null,
+    "param_nanos": 0,
+    "result": null
+  },
+  {
+    "param_instant": null,
+    "param_seconds": 625000000,
+    "param_nanos": null,
+    "result": null
+  },
+  {
+    "param_instant": {
+      "seconds_field": 625000000,
+      "nanos_field": 123456789
+    },
+    "param_seconds": null,
+    "param_nanos": null,
+    "result": null
+  },
+  {
+    "param_instant": null,
+    "param_seconds": null,
+    "param_nanos": null,
+    "result": null
+  }
+]

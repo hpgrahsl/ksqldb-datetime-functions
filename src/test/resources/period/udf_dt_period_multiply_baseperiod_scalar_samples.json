@@ -1,0 +1,60 @@
+[
+  {
+    "param_basePeriod": {
+      "years_field": 1,
+      "months_field": 2,
+      "days_field": 3
+    },
+    "param_scalar": 1,
+    "result": {
+      "years_field": 1,
+      "months_field": 2,
+      "days_field": 3
+    }
+  },
+  {
+    "param_basePeriod": {
+      "years_field": 30,
+      "months_field": -20,
+      "days_field": 10
+    },
+    "param_scalar": -3,
+    "result": {
+      "years_field": -90,
+      "months_field": 60,
+      "days_field": -30
+    }
+  },
+  {
+    "param_basePeriod": {
+      "years_field": 1000,
+      "months_field": 100,
+      "days_field": 10
+    },
+    "param_scalar": 0,
+    "result": {
+      "years_field": 0,
+      "months_field": 0,
+      "days_field": 0
+    }
+  },
+  {
+    "param_basePeriod": null,
+    "param_scalar": 1,
+    "result": null
+  },
+  {
+    "param_basePeriod": {
+      "years_field": 1,
+      "months_field": 2,
+      "days_field": 3
+    },
+    "param_scalar": null,
+    "result": null
+  },
+  {
+    "param_basePeriod": null,
+    "param_scalar": null,
+    "result": null
+  }
+]

@@ -1,0 +1,65 @@
+[
+  {
+    "param_baseDuration": {
+      "seconds_field": 0,
+      "nanos_field": 0
+    },
+    "param_addDuration": {
+      "seconds_field": 0,
+      "nanos_field": 0
+    },
+    "result": {
+      "seconds_field": 0,
+      "nanos_field": 0
+    }
+  },
+  {
+    "param_baseDuration": {
+      "seconds_field": 3540,
+      "nanos_field": 450000000
+    },
+    "param_addDuration": {
+      "seconds_field": 60,
+      "nanos_field": 450000000
+    },
+    "result": {
+      "seconds_field": 3600,
+      "nanos_field": 900000000
+    }
+  },
+  {
+    "param_baseDuration": {
+      "seconds_field": -120,
+      "nanos_field": 0
+    },
+    "param_addDuration": {
+      "seconds_field": 240,
+      "nanos_field": 0
+    },
+    "result": {
+      "seconds_field": 120,
+      "nanos_field": 0
+    }
+  },
+  {
+    "param_baseDuration": null,
+    "param_addDuration": {
+      "seconds_field": 900,
+      "nanos_field": 999999999
+    },
+    "result": null
+  },
+  {
+    "param_baseDuration": {
+      "seconds_field": 900,
+      "nanos_field": 999999999
+    },
+    "param_addDuration": null,
+    "result": null
+  },
+  {
+    "param_baseDuration": null,
+    "param_addDuration": null,
+    "result": null
+  }
+]

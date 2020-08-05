@@ -1,0 +1,93 @@
+[
+  {
+    "param_basePeriod": {
+      "years_field": 0,
+      "months_field": 0,
+      "days_field": 0
+    },
+    "param_addPeriod": {
+      "years_field": 0,
+      "months_field": 0,
+      "days_field": 0
+    },
+    "result": {
+      "years_field": 0,
+      "months_field": 0,
+      "days_field": 0
+    }
+  },
+  {
+    "param_basePeriod": {
+      "years_field": 100,
+      "months_field": 10,
+      "days_field": 1
+    },
+    "param_addPeriod": {
+      "years_field": 100,
+      "months_field": 10,
+      "days_field": 1
+    },
+    "result": {
+      "years_field": 200,
+      "months_field": 20,
+      "days_field": 2
+    }
+  },
+  {
+    "param_basePeriod": {
+      "years_field": 0,
+      "months_field": 0,
+      "days_field": 0
+    },
+    "param_addPeriod": {
+      "years_field": 37,
+      "months_field": 0,
+      "days_field": 3
+    },
+    "result": {
+      "years_field": 37,
+      "months_field": 0,
+      "days_field": 3
+    }
+  },
+  {
+    "param_basePeriod": {
+      "years_field": 0,
+      "months_field": 10,
+      "days_field": 0
+    },
+    "param_addPeriod": {
+      "years_field": 0,
+      "months_field": -10,
+      "days_field": 0
+    },
+    "result": {
+      "years_field": 0,
+      "months_field": 0,
+      "days_field": 0
+    }
+  },
+  {
+    "param_basePeriod": null,
+    "param_addPeriod": {
+      "years_field": 0,
+      "months_field": 0,
+      "days_field": 0
+    },
+    "result": null
+  },
+  {
+    "param_basePeriod": {
+      "years_field": 0,
+      "months_field": 0,
+      "days_field": 0
+    },
+    "param_addPeriod": null,
+    "result": null
+  },
+  {
+    "param_basePeriod": null,
+    "param_addPeriod": null,
+    "result": null
+  }
+]

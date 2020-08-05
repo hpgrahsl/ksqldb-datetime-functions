@@ -1,0 +1,33 @@
+[
+  {
+    "param_localTime": {
+      "hour_field": 20,
+      "minute_field": 30,
+      "second_field": 50,
+      "nano_field": 0
+    },
+    "result": "20:30:50"
+  },
+  {
+    "param_localTime": {
+      "hour_field": 20,
+      "minute_field": 30,
+      "second_field": 50,
+      "nano_field": 123450000
+    },
+    "result": "20:30:50.12345"
+  },
+  {
+    "param_localTime": {
+      "hour_field": 0,
+      "minute_field": 0,
+      "second_field": 0,
+      "nano_field": 999999999
+    },
+    "result": "00:00:00.999999999"
+  },
+  {
+    "param_localTime": null,
+    "result": null
+  }
+]

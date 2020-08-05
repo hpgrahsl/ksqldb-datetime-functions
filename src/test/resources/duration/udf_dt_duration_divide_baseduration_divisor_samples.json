@@ -1,0 +1,83 @@
+[
+  {
+    "param_baseDuration": {
+      "seconds_field": 0,
+      "nanos_field": 0
+    },
+    "param_divisor": 10,
+    "result": {
+      "seconds_field": 0,
+      "nanos_field": 0
+    }
+  },
+  {
+    "param_baseDuration": {
+      "seconds_field": 1000,
+      "nanos_field": 2500
+    },
+    "param_divisor": 25,
+    "result": {
+      "seconds_field": 40,
+      "nanos_field": 100
+    }
+  },
+  {
+    "param_baseDuration": {
+      "seconds_field": 1000,
+      "nanos_field": 2500
+    },
+    "param_divisor": 1,
+    "result": {
+      "seconds_field": 1000,
+      "nanos_field": 2500
+    }
+  },
+  {
+    "param_baseDuration": {
+      "seconds_field": 4096,
+      "nanos_field": 16384
+    },
+    "param_divisor": 4,
+    "result": {
+      "seconds_field": 1024,
+      "nanos_field": 4096
+    }
+  },
+  {
+    "param_baseDuration": {
+      "seconds_field": 4096,
+      "nanos_field": 16384
+    },
+    "param_divisor": -4,
+    "result": {
+      "seconds_field": -1025,
+      "nanos_field": 999995904
+    }
+  },
+  {
+    "param_baseDuration": {
+      "seconds_field": 4096,
+      "nanos_field": 16384
+    },
+    "param_divisor": 0,
+    "result": null
+  },
+  {
+    "param_baseDuration": null,
+    "param_divisor": 1,
+    "result": null
+  },
+  {
+    "param_baseDuration": {
+      "seconds_field": 4096,
+      "nanos_field": 16384
+    },
+    "param_divisor": null,
+    "result": null
+  },
+  {
+    "param_baseDuration": null,
+    "param_divisor": null,
+    "result": null
+  }
+]

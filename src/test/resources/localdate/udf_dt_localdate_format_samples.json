@@ -1,0 +1,30 @@
+[
+  {
+    "param_localDate": {
+      "year_field": 1970,
+      "month_field": 1,
+      "day_field": 1
+    },
+    "result": "1970-01-01"
+  },
+  {
+    "param_localDate": {
+      "year_field": 2003,
+      "month_field": 10,
+      "day_field": 20
+    },
+    "result": "2003-10-20"
+  },
+  {
+    "param_localDate": {
+      "year_field": 2034,
+      "month_field": 3,
+      "day_field": 22
+    },
+    "result": "2034-03-22"
+  },
+  {
+    "param_localDate": null,
+    "result": null
+  }
+]

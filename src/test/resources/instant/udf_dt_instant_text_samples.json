@@ -1,0 +1,27 @@
+[
+  {
+    "param_text": "1970-01-01T00:00:00.000Z",
+    "result": {
+      "seconds_field": 0,
+      "nanos_field": 0
+    }
+  },
+  {
+    "param_text": "2020-07-29T11:13:33Z",
+    "result": {
+      "seconds_field": 1596021213,
+      "nanos_field": 0
+    }
+  },
+  {
+    "param_text": "2020-07-29T11:13:33.999Z",
+    "result": {
+      "seconds_field": 1596021213,
+      "nanos_field": 999000000
+    }
+  },
+  {
+    "param_text": null,
+    "result": null
+  }
+]

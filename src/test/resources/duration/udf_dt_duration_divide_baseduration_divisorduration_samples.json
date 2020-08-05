@@ -1,0 +1,122 @@
+[
+  {
+    "param_baseDuration": {
+      "seconds_field": 0,
+      "nanos_field": 0
+    },
+    "param_divisorDuration": {
+      "seconds_field": 10,
+      "nanos_field": 0
+    },
+    "result": 0
+  },
+  {
+    "param_baseDuration": {
+      "seconds_field": 1000,
+      "nanos_field": 0
+    },
+    "param_divisorDuration": {
+      "seconds_field": 25,
+      "nanos_field": 0
+    },
+    "result": 40
+  },
+  {
+    "param_baseDuration": {
+      "seconds_field": 1000,
+      "nanos_field": 2500
+    },
+    "param_divisorDuration": {
+      "seconds_field": 1,
+      "nanos_field": 0
+    },
+    "result": 1000
+  },
+  {
+    "param_baseDuration": {
+      "seconds_field": 4096,
+      "nanos_field": 16384
+    },
+    "param_divisorDuration": {
+      "seconds_field": 4096,
+      "nanos_field": 16384
+    },
+    "result": 1
+  },
+  {
+    "param_baseDuration": {
+      "seconds_field": 86400,
+      "nanos_field": 0
+    },
+    "param_divisorDuration": {
+      "seconds_field": 43201,
+      "nanos_field": 0
+    },
+    "result": 1
+  },
+  {
+    "param_baseDuration": {
+      "seconds_field": 4096,
+      "nanos_field": 16384
+    },
+    "param_divisorDuration": {
+      "seconds_field": 0,
+      "nanos_field": 0
+    },
+    "result": null
+  },
+  {
+    "param_baseDuration": {
+      "seconds_field": 0,
+      "nanos_field": 500000000
+    },
+    "param_divisorDuration": {
+      "seconds_field": 0,
+      "nanos_field": 25
+    },
+    "result": 20000000
+  },
+  {
+    "param_baseDuration": {
+      "seconds_field": 3600,
+      "nanos_field": 0
+    },
+    "param_divisorDuration": {
+      "seconds_field": -42,
+      "nanos_field": 0
+    },
+    "result": -85
+  },
+  {
+    "param_baseDuration": {
+      "seconds_field": -3600,
+      "nanos_field": 0
+    },
+    "param_divisorDuration": {
+      "seconds_field": 42,
+      "nanos_field": 0
+    },
+    "result": -85
+  },
+  {
+    "param_baseDuration": null,
+    "param_divisorDuration": {
+      "seconds_field": 42,
+      "nanos_field": 0
+    },
+    "result": null
+  },
+  {
+    "param_baseDuration": {
+      "seconds_field": 100,
+      "nanos_field": 100
+    },
+    "param_divisorDuration": null,
+    "result": null
+  },
+  {
+    "param_baseDuration": null,
+    "param_divisorDuration": null,
+    "result": null
+  }
+]

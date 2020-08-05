@@ -1,0 +1,34 @@
+[
+  {
+    "param_duration": {
+      "seconds_field": 0,
+      "nanos_field": 0
+    },
+    "result": "PT0S"
+  },
+  {
+    "param_duration": {
+      "seconds_field": 0,
+      "nanos_field": 12345
+    },
+    "result": "PT0.000012345S"
+  },
+  {
+    "param_duration": {
+      "seconds_field": 428502896,
+      "nanos_field": 0
+    },
+    "result": "PT119028H34M56S"
+  },
+  {
+    "param_duration": {
+      "seconds_field": 946688461,
+      "nanos_field": 111222333
+    },
+    "result": "PT262969H1M1.111222333S"
+  },
+  {
+    "param_duration": null,
+    "result": null
+  }
+]

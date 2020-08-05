@@ -1,0 +1,27 @@
+[
+  {
+    "param_millis": 0,
+    "result": {
+      "seconds_field": 0,
+      "nanos_field": 0
+    }
+  },
+  {
+    "param_millis": 1596021213000,
+    "result": {
+      "seconds_field": 1596021213,
+      "nanos_field": 0
+    }
+  },
+  {
+    "param_millis": 1596021213999,
+    "result": {
+      "seconds_field": 1596021213,
+      "nanos_field": 999000000
+    }
+  },
+  {
+    "param_millis": null,
+    "result": null
+  }
+]

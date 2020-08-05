@@ -1,0 +1,46 @@
+[
+  {
+    "param_text": "20:30:50",
+    "param_pattern": "HH:mm:ss",
+    "result": {
+      "hour_field": 20,
+      "minute_field": 30,
+      "second_field": 50,
+      "nano_field": 0
+    }
+  },
+  {
+    "param_text": "08-30-50.123 AM",
+    "param_pattern": "hh-mm-ss.SSS a",
+    "result": {
+      "hour_field": 8,
+      "minute_field": 30,
+      "second_field": 50,
+      "nano_field": 123000000
+    }
+  },
+  {
+    "param_text": "08-30-50.123 PM",
+    "param_pattern": "hh-mm-ss.SSS a",
+    "result": {
+      "hour_field": 20,
+      "minute_field": 30,
+      "second_field": 50,
+      "nano_field": 123000000
+    }
+  },
+  {
+    "param_text": "00:00:00-999999999",
+    "param_pattern": "HH:mm:ss-SSSSSSSSS",
+    "result": {
+      "hour_field": 0,
+      "minute_field": 0,
+      "second_field": 0,
+      "nano_field": 999999999
+    }
+  },
+  {
+    "param_text": null,
+    "result": null
+  }
+]

@@ -1,0 +1,350 @@
+[
+  {
+    "param_baseLocalDateTime": {
+      "localdate_field": {
+        "year_field": 1970,
+        "month_field": 1,
+        "day_field": 1
+      },
+      "localtime_field": {
+        "hour_field": 0,
+        "minute_field": 0,
+        "second_field": 0,
+        "nano_field": 0
+      }
+    },
+    "param_localDateTime": {
+      "localdate_field": {
+        "year_field": 2020,
+        "month_field": 7,
+        "day_field": 31
+      },
+      "localtime_field": {
+        "hour_field": 0,
+        "minute_field": 0,
+        "second_field": 0,
+        "nano_field": 0
+      }
+    },
+    "param_chronologyMode": "IS_AFTER",
+    "result": true
+  },
+  {
+    "param_baseLocalDateTime": {
+      "localdate_field": {
+        "year_field": 1970,
+        "month_field": 1,
+        "day_field": 1
+      },
+      "localtime_field": {
+        "hour_field": 0,
+        "minute_field": 0,
+        "second_field": 0,
+        "nano_field": 0
+      }
+    },
+    "param_localDateTime": {
+      "localdate_field": {
+        "year_field": 2020,
+        "month_field": 7,
+        "day_field": 31
+      },
+      "localtime_field": {
+        "hour_field": 0,
+        "minute_field": 0,
+        "second_field": 0,
+        "nano_field": 0
+      }
+    },
+    "param_chronologyMode": "IS_BEFORE",
+    "result": false
+  },
+  {
+    "param_baseLocalDateTime": {
+      "localdate_field": {
+        "year_field": 1970,
+        "month_field": 1,
+        "day_field": 1
+      },
+      "localtime_field": {
+        "hour_field": 0,
+        "minute_field": 0,
+        "second_field": 0,
+        "nano_field": 0
+      }
+    },
+    "param_localDateTime": {
+      "localdate_field": {
+        "year_field": 2020,
+        "month_field": 7,
+        "day_field": 31
+      },
+      "localtime_field": {
+        "hour_field": 0,
+        "minute_field": 0,
+        "second_field": 0,
+        "nano_field": 0
+      }
+    },
+    "param_chronologyMode": "IS_EQUAL",
+    "result": false
+  },
+  {
+    "param_baseLocalDateTime": {
+      "localdate_field": {
+        "year_field": 2020,
+        "month_field": 7,
+        "day_field": 31
+      },
+      "localtime_field": {
+        "hour_field": 0,
+        "minute_field": 0,
+        "second_field": 0,
+        "nano_field": 0
+      }
+    },
+    "param_localDateTime": {
+      "localdate_field": {
+        "year_field": 1970,
+        "month_field": 1,
+        "day_field": 1
+      },
+      "localtime_field": {
+        "hour_field": 0,
+        "minute_field": 0,
+        "second_field": 0,
+        "nano_field": 0
+      }
+    },
+    "param_chronologyMode": "IS_AFTER",
+    "result": false
+  },
+  {
+    "param_baseLocalDateTime": {
+      "localdate_field": {
+        "year_field": 2020,
+        "month_field": 7,
+        "day_field": 31
+      },
+      "localtime_field": {
+        "hour_field": 0,
+        "minute_field": 0,
+        "second_field": 0,
+        "nano_field": 0
+      }
+    },
+    "param_localDateTime": {
+      "localdate_field": {
+        "year_field": 1970,
+        "month_field": 1,
+        "day_field": 1
+      },
+      "localtime_field": {
+        "hour_field": 0,
+        "minute_field": 0,
+        "second_field": 0,
+        "nano_field": 0
+      }
+    },
+    "param_chronologyMode": "IS_BEFORE",
+    "result": true
+  },
+  {
+    "param_baseLocalDateTime": {
+      "localdate_field": {
+        "year_field": 2020,
+        "month_field": 7,
+        "day_field": 31
+      },
+      "localtime_field": {
+        "hour_field": 0,
+        "minute_field": 0,
+        "second_field": 0,
+        "nano_field": 0
+      }
+    },
+    "param_localDateTime": {
+      "localdate_field": {
+        "year_field": 1970,
+        "month_field": 1,
+        "day_field": 1
+      },
+      "localtime_field": {
+        "hour_field": 0,
+        "minute_field": 0,
+        "second_field": 0,
+        "nano_field": 0
+      }
+    },
+    "param_chronologyMode": "IS_EQUAL",
+    "result": false
+  },
+  {
+    "param_baseLocalDateTime": {
+      "localdate_field": {
+        "year_field": 2000,
+        "month_field": 1,
+        "day_field": 1
+      },
+      "localtime_field": {
+        "hour_field": 0,
+        "minute_field": 10,
+        "second_field": 12,
+        "nano_field": 555666111
+      }
+    },
+    "param_localDateTime": {
+      "localdate_field": {
+        "year_field": 2000,
+        "month_field": 1,
+        "day_field": 1
+      },
+      "localtime_field": {
+        "hour_field": 0,
+        "minute_field": 10,
+        "second_field": 12,
+        "nano_field": 555666111
+      }
+    },
+    "param_chronologyMode": "IS_AFTER",
+    "result": false
+  },
+  {
+    "param_baseLocalDateTime": {
+      "localdate_field": {
+        "year_field": 2000,
+        "month_field": 1,
+        "day_field": 1
+      },
+      "localtime_field": {
+        "hour_field": 0,
+        "minute_field": 10,
+        "second_field": 12,
+        "nano_field": 555666111
+      }
+    },
+    "param_localDateTime": {
+      "localdate_field": {
+        "year_field": 2000,
+        "month_field": 1,
+        "day_field": 1
+      },
+      "localtime_field": {
+        "hour_field": 0,
+        "minute_field": 10,
+        "second_field": 12,
+        "nano_field": 555666111
+      }
+    },
+    "param_chronologyMode": "IS_BEFORE",
+    "result": false
+  },
+  {
+    "param_baseLocalDateTime": {
+      "localdate_field": {
+        "year_field": 2000,
+        "month_field": 1,
+        "day_field": 1
+      },
+      "localtime_field": {
+        "hour_field": 0,
+        "minute_field": 10,
+        "second_field": 12,
+        "nano_field": 555666111
+      }
+    },
+    "param_localDateTime": {
+      "localdate_field": {
+        "year_field": 2000,
+        "month_field": 1,
+        "day_field": 1
+      },
+      "localtime_field": {
+        "hour_field": 0,
+        "minute_field": 10,
+        "second_field": 12,
+        "nano_field": 555666111
+      }
+    },
+    "param_chronologyMode": "IS_EQUAL",
+    "result": true
+  },
+  {
+    "param_baseLocalDateTime": null,
+    "param_localDateTime": {
+      "localdate_field": {
+        "year_field": 2000,
+        "month_field": 1,
+        "day_field": 1
+      },
+      "localtime_field": {
+        "hour_field": 0,
+        "minute_field": 10,
+        "second_field": 12,
+        "nano_field": 555666111
+      }
+    },
+    "param_chronologyMode": "IS_AFTER",
+    "result": null
+  },
+  {
+    "param_baseLocalDateTime": {
+      "localdate_field": {
+        "year_field": 2000,
+        "month_field": 1,
+        "day_field": 1
+      },
+      "localtime_field": {
+        "hour_field": 0,
+        "minute_field": 10,
+        "second_field": 12,
+        "nano_field": 555666111
+      }
+    },
+    "param_localDateTime": null,
+    "param_chronologyMode": "IS_BEFORE",
+    "result": null
+  },
+  {
+    "param_baseLocalDateTime": null,
+    "param_localDateTime": null,
+    "param_chronologyMode": "IS_EQUAL",
+    "result": null
+  },
+  {
+    "param_baseLocalDateTime": {
+      "localdate_field": {
+        "year_field": 2000,
+        "month_field": 1,
+        "day_field": 1
+      },
+      "localtime_field": {
+        "hour_field": 0,
+        "minute_field": 10,
+        "second_field": 12,
+        "nano_field": 555666111
+      }
+    },
+    "param_localDateTime": {
+      "localdate_field": {
+        "year_field": 2000,
+        "month_field": 1,
+        "day_field": 1
+      },
+      "localtime_field": {
+        "hour_field": 0,
+        "minute_field": 10,
+        "second_field": 12,
+        "nano_field": 555666111
+      }
+    },
+    "param_chronologyMode": "ILLEGAL",
+    "result": null
+  },
+  {
+    "param_baseLocalDateTime": null,
+    "param_localDateTime": null,
+    "param_chronologyMode": null,
+    "result": null
+  }
+]

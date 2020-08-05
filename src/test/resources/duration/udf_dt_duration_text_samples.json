@@ -1,0 +1,27 @@
+[
+  {
+    "param_text": "PT20.345S",
+    "result": {
+      "seconds_field": 20,
+      "nanos_field": 345000000
+    }
+  },
+  {
+    "param_text": "PT15M",
+    "result": {
+      "seconds_field": 900,
+      "nanos_field": 0
+    }
+  },
+  {
+    "param_text": "P2DT3H4M",
+    "result": {
+      "seconds_field": 183840,
+      "nanos_field": 0
+    }
+  },
+  {
+    "param_text": null,
+    "result": null
+  }
+]

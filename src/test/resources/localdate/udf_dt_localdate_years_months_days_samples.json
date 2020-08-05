@@ -1,0 +1,28 @@
+[
+  {
+    "param_year": 1970,
+    "param_month": 1,
+    "param_day": 1,
+    "result": {
+      "year_field": 1970,
+      "month_field": 1,
+      "day_field": 1
+    }
+  },
+  {
+    "param_year": 2020,
+    "param_month": 8,
+    "param_day": 4,
+    "result": {
+      "year_field": 2020,
+      "month_field": 8,
+      "day_field": 4
+    }
+  },
+  {
+    "param_year": null,
+    "param_month": null,
+    "param_day": null,
+    "result": null
+  }
+]

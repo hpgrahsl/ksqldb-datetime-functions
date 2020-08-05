@@ -1,0 +1,81 @@
+[
+  {
+    "param_localTimeFrom": {
+      "hour_field": 0,
+      "minute_field": 0,
+      "second_field": 0,
+      "nano_field": 0
+    },
+    "param_localTimeTo": {
+      "hour_field": 12,
+      "minute_field": 0,
+      "second_field": 0,
+      "nano_field": 0
+    },
+    "result": {
+      "seconds_field": 43200,
+      "nanos_field": 0
+    }
+  },
+  {
+    "param_localTimeFrom": {
+      "hour_field": 7,
+      "minute_field": 7,
+      "second_field": 7,
+      "nano_field": 777777777
+    },
+    "param_localTimeTo": {
+      "hour_field": 0,
+      "minute_field": 0,
+      "second_field": 0,
+      "nano_field": 0
+    },
+    "result": {
+      "seconds_field": -25628,
+      "nanos_field": 222222223
+    }
+  },
+  {
+    "param_localTimeFrom": {
+      "hour_field": 13,
+      "minute_field": 0,
+      "second_field": 1,
+      "nano_field": 0
+    },
+    "param_localTimeTo": {
+      "hour_field": 13,
+      "minute_field": 59,
+      "second_field": 30,
+      "nano_field": 0
+    },
+    "result": {
+      "seconds_field": 3569,
+      "nanos_field": 0
+    }
+  },
+  {
+    "param_localTimeFrom": null,
+    "param_localTimeTo": {
+      "hour_field": 13,
+      "minute_field": 59,
+      "second_field": 30,
+      "nano_field": 0
+    },
+    "result": null
+  },
+  {
+    "param_localTimeFrom": {
+      "hour_field": 13,
+      "minute_field": 0,
+      "second_field": 1,
+      "nano_field": 0
+    },
+    "param_localTimeTo": null,
+    "result": null
+  },
+  {
+    "param_localTimeFrom": null,
+    "param_localTimeTo": null,
+    "result": null
+  }
+]

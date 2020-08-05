@@ -1,0 +1,42 @@
+[
+  {
+    "param_period": {
+      "years_field": 1,
+      "months_field": 2,
+      "days_field": 3
+    },
+    "result": {
+      "years_field": 1,
+      "months_field": 2,
+      "days_field": 3
+    }
+  },
+  {
+    "param_period": {
+      "years_field": 0,
+      "months_field": 60,
+      "days_field": 100
+    },
+    "result": {
+      "years_field": 5,
+      "months_field": 0,
+      "days_field": 100
+    }
+  },
+  {
+    "param_period": {
+      "years_field": 1000,
+      "months_field": 100,
+      "days_field": 10
+    },
+    "result": {
+      "years_field": 1008,
+      "months_field": 4,
+      "days_field": 10
+    }
+  },
+  {
+    "param_period": null,
+    "result": null
+  }
+]

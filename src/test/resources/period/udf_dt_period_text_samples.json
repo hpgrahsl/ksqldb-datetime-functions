@@ -1,0 +1,46 @@
+[
+  {
+    "param_text": "P0D",
+    "result": {
+      "years_field": 0,
+      "months_field": 0,
+      "days_field": 0
+    }
+  },
+  {
+    "param_text": "P1Y2M3D",
+    "result": {
+      "years_field": 1,
+      "months_field": 2,
+      "days_field": 3
+    }
+  },
+  {
+    "param_text": "P-10Y-12M-30D",
+    "result": {
+      "years_field": -10,
+      "months_field": -12,
+      "days_field": -30
+    }
+  },
+  {
+    "param_text": "P37Y2D",
+    "result": {
+      "years_field": 37,
+      "months_field": 0,
+      "days_field": 2
+    }
+  },
+  {
+    "param_text": "P100Y100M100D",
+    "result": {
+      "years_field": 100,
+      "months_field": 100,
+      "days_field": 100
+    }
+  },
+  {
+    "param_text": null,
+    "result": null
+  }
+]
