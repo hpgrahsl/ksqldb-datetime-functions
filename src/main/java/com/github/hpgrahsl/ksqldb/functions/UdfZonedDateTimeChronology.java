@@ -27,46 +27,46 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 @UdfDescription(
-    name = "dt_localtime_chronology",
-    description = "Chronology check of local times",
+    name = "dt_zoneddatetime_chronology",
+    description = "Chronology check of zoned datetimes",
     author = "Hans-Peter Grahsl (follow @hpgrahsl)",
     version = "0.1.0"
     )
-public class UdfLocalTimeChronology {
+public class UdfZonedDateTimeChronology {
 
-  private static final Logger LOGGER = LoggerFactory.getLogger(UdfLocalTimeChronology.class);
+  private static final Logger LOGGER = LoggerFactory.getLogger(UdfZonedDateTimeChronology.class);
 
-  @Udf(description = "Check if a local time is either before, after or equal to another local time")
+  @Udf(description = "Check if a zoned datetime is either before, after or equal to another zoned datetime")
   public Boolean check(
       @UdfParameter(
-          value = "baseLocalTime",
-          description = "the local time to check against",
-          schema = DateTimeSchemas.LOCALTIME_SCHEMA_DESCRIPTOR)
-      final Struct baseLocalTime,
+          value = "baseZonedDateTime",
+          description = "the zoned datetime to check against",
+          schema = DateTimeSchemas.ZONEDDATETIME_SCHEMA_DESCRIPTOR)
+      final Struct baseZonedDateTime,
       @UdfParameter(
-          value = "localTime",
-          description = "the local time to check whether it's before, after or equal",
-          schema = DateTimeSchemas.LOCALTIME_SCHEMA_DESCRIPTOR)
-      final Struct localTime,
+          value = "zonedDateTime",
+          description = "the zoned datetime to check whether it's before, after or equal",
+          schema = DateTimeSchemas.ZONEDDATETIME_SCHEMA_DESCRIPTOR)
+      final Struct zonedDateTime,
       @UdfParameter(
           value = "chronologyMode",
           description = "the chronologyMode being either: 'IS_BEFORE','IS_AFTER','IS_EQUAL'")
       final String chronologyMode
       ) {
-    if (baseLocalTime == null || localTime == null || chronologyMode == null)
+    if (baseZonedDateTime == null || zonedDateTime == null || chronologyMode == null)
       return null;
     try {
       ChronologyMode cm = ChronologyMode.valueOf(chronologyMode);
       switch (cm) {
         case IS_BEFORE:
-          return StructsConverter.fromLocalTimeStruct(localTime)
-              .isBefore(StructsConverter.fromLocalTimeStruct(baseLocalTime));
+          return StructsConverter.fromZonedDateTimeStruct(zonedDateTime)
+              .isBefore(StructsConverter.fromZonedDateTimeStruct(baseZonedDateTime));
         case IS_AFTER:
-          return StructsConverter.fromLocalTimeStruct(localTime)
-              .isAfter(StructsConverter.fromLocalTimeStruct(baseLocalTime));
+          return StructsConverter.fromZonedDateTimeStruct(zonedDateTime)
+              .isAfter(StructsConverter.fromZonedDateTimeStruct(baseZonedDateTime));
         case IS_EQUAL:
-          return StructsConverter.fromLocalTimeStruct(localTime)
-              .equals(StructsConverter.fromLocalTimeStruct(baseLocalTime));
+          return StructsConverter.fromZonedDateTimeStruct(zonedDateTime)
+              .isEqual(StructsConverter.fromZonedDateTimeStruct(baseZonedDateTime));
       }
     } catch(IllegalArgumentException e) {
       LOGGER.error("chronologyMode '" + chronologyMode +

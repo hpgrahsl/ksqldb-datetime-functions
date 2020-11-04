@@ -8,10 +8,12 @@ This project provides custom [ksqlDB](https://ksqldb.io/) user-defined functions
 * **[LocalDate](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/time/LocalDate.html)**: STRUCT<YEAR_FIELD INTEGER, MONTH_FIELD INTEGER, DAY_FIELD INTEGER>
 * **[LocalTime](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/time/LocalTime.html)**: STRUCT<HOUR_FIELD INTEGER, MINUTE_FIELD INTEGER, SECOND_FIELD INTEGER, NANO_FIELD INTEGER>
 * **[LocalDateTime](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/time/LocalDateTime.html)**: STRUCT<LOCALDATE_FIELD STRUCT<YEAR_FIELD INTEGER, MONTH_FIELD INTEGER, DAY_FIELD INTEGER>, LOCALTIME_FIELD STRUCT<HOUR_FIELD INTEGER, MINUTE_FIELD INTEGER, SECOND_FIELD INTEGER, NANO_FIELD INTEGER>>
+* **[OffsetDateTime](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/time/OffsetDateTime.html)**: STRUCT<DATETIME_FIELD STRUCT<LOCALDATE_FIELD STRUCT<YEAR_FIELD INTEGER, MONTH_FIELD INTEGER, DAY_FIELD INTEGER>, LOCALTIME_FIELD STRUCT<HOUR_FIELD INTEGER, MINUTE_FIELD INTEGER, SECOND_FIELD INTEGER, NANO_FIELD INTEGER>>, OFFSET_FIELD STRUCT<TOTALSECONDS_FIELD INTEGER>>
+* **[ZonedDateTime](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/time/ZonedDateTime.html)**: STRUCT<DATETIME_FIELD STRUCT<LOCALDATE_FIELD STRUCT<YEAR_FIELD INTEGER, MONTH_FIELD INTEGER, DAY_FIELD INTEGER>, LOCALTIME_FIELD STRUCT<HOUR_FIELD INTEGER, MINUTE_FIELD INTEGER, SECOND_FIELD INTEGER, NANO_FIELD INTEGER>>, OFFSET_FIELD STRUCT<TOTALSECONDS_FIELD INTEGER>, ZONE_FIELD STRUCT<ID_FIELD VARCHAR>>
 
 All processing and calculations are done based on the custom ksqlDB STRUCT types.
 
-NOTE: further types, first and foremost, _OffsetTime, OffsetDateTime, ZonedDateTime_ will get introduced in future versions of this project!
+NOTE: further types might get introduced in future versions of this project should the need arise.
 
 ## **Available Date & Time Functions**
 
@@ -820,53 +822,347 @@ Variations  :
 	period      : the Period struct to stringify
 ```
 
+### **OffsetDateTime related UDFs**
+
+#### DT_OFFSETDATETIME(...) factory functions to create OffsetDateTime STRUCTs 
+
+```
+Name        : DT_OFFSETDATETIME
+Version     : 0.1.0
+Overview    : Factory functions for OffsetDateTime struct creation
+Type        : SCALAR
+Variations  : 
+
+	Variation   : DT_OFFSETDATETIME(text VARCHAR, format VARCHAR)
+	Returns     : STRUCT<DATETIME_FIELD STRUCT<LOCALDATE_FIELD STRUCT<YEAR_FIELD INT, MONTH_FIELD INT, DAY_FIELD INT>, LOCALTIME_FIELD STRUCT<HOUR_FIELD INT, MINUTE_FIELD INT, SECOND_FIELD INT, NANO_FIELD INT>>, OFFSET_FIELD STRUCT<TOTALSECONDS_FIELD INT>>
+	Description : Create an OffsetDateTime struct from its string representation using the specified java.time.format.DateTimeFormatter format string
+	text        : the string representation of the OffsetDateTime
+	format      : the specified java.time.format.DateTimeFormatter format string
+
+	Variation   : DT_OFFSETDATETIME(localDateTime STRUCT<LOCALDATE_FIELD STRUCT<YEAR_FIELD INT, MONTH_FIELD INT, DAY_FIELD INT>, LOCALTIME_FIELD STRUCT<HOUR_FIELD INT, MINUTE_FIELD INT, SECOND_FIELD INT, NANO_FIELD INT>>, zoneOffset STRUCT<TOTALSECONDS_FIELD INT>)
+	Returns     : STRUCT<DATETIME_FIELD STRUCT<LOCALDATE_FIELD STRUCT<YEAR_FIELD INT, MONTH_FIELD INT, DAY_FIELD INT>, LOCALTIME_FIELD STRUCT<HOUR_FIELD INT, MINUTE_FIELD INT, SECOND_FIELD INT, NANO_FIELD INT>>, OFFSET_FIELD STRUCT<TOTALSECONDS_FIELD INT>>
+	Description : Create an OffsetDateTime struct based on given LocalDateTime and ZoneOffset structs
+	localDateTime: the LocalDateTime struct for the OffsetDateTime
+	zoneOffset  : the ZoneOffset struct for the OffsetDateTime
+
+	Variation   : DT_OFFSETDATETIME()
+	Returns     : STRUCT<DATETIME_FIELD STRUCT<LOCALDATE_FIELD STRUCT<YEAR_FIELD INT, MONTH_FIELD INT, DAY_FIELD INT>, LOCALTIME_FIELD STRUCT<HOUR_FIELD INT, MINUTE_FIELD INT, SECOND_FIELD INT, NANO_FIELD INT>>, OFFSET_FIELD STRUCT<TOTALSECONDS_FIELD INT>>
+	Description : Create an OffsetDateTime struct based on the system clock's current date-time and default time-zone
+
+	Variation   : DT_OFFSETDATETIME(text VARCHAR)
+	Returns     : STRUCT<DATETIME_FIELD STRUCT<LOCALDATE_FIELD STRUCT<YEAR_FIELD INT, MONTH_FIELD INT, DAY_FIELD INT>, LOCALTIME_FIELD STRUCT<HOUR_FIELD INT, MINUTE_FIELD INT, SECOND_FIELD INT, NANO_FIELD INT>>, OFFSET_FIELD STRUCT<TOTALSECONDS_FIELD INT>>
+	Description : Create an OffsetDateTime struct from its string representation using java.time.format.DateTimeFormatter#ISO_OFFSET_DATE_TIME
+	text        : the string representation of the OffsetDateTime
+
+	Variation   : DT_OFFSETDATETIME(zoneId STRUCT<ID_FIELD VARCHAR>)
+	Returns     : STRUCT<DATETIME_FIELD STRUCT<LOCALDATE_FIELD STRUCT<YEAR_FIELD INT, MONTH_FIELD INT, DAY_FIELD INT>, LOCALTIME_FIELD STRUCT<HOUR_FIELD INT, MINUTE_FIELD INT, SECOND_FIELD INT, NANO_FIELD INT>>, OFFSET_FIELD STRUCT<TOTALSECONDS_FIELD INT>>
+	Description : Create an OffsetDateTime struct based on the system clock's date-time in the specified time-zone
+	zoneId      : the ZoneId struct for the OffsetDateTime
+
+	Variation   : DT_OFFSETDATETIME(localDate STRUCT<YEAR_FIELD INT, MONTH_FIELD INT, DAY_FIELD INT>, localTime STRUCT<HOUR_FIELD INT, MINUTE_FIELD INT, SECOND_FIELD INT, NANO_FIELD INT>, zoneOffset STRUCT<TOTALSECONDS_FIELD INT>)
+	Returns     : STRUCT<DATETIME_FIELD STRUCT<LOCALDATE_FIELD STRUCT<YEAR_FIELD INT, MONTH_FIELD INT, DAY_FIELD INT>, LOCALTIME_FIELD STRUCT<HOUR_FIELD INT, MINUTE_FIELD INT, SECOND_FIELD INT, NANO_FIELD INT>>, OFFSET_FIELD STRUCT<TOTALSECONDS_FIELD INT>>
+	Description : Create an OffsetDateTime struct based on given LocalDate, LocalTime and ZoneOffset structs
+	localDate   : the LocalDate struct for the OffsetDateTime
+	localTime   : the LocalTime struct for the OffsetDateTime
+	zoneOffset  : the ZoneOffset struct for the OffsetDateTime
+```
+
+#### DT_OFFSETDATETIME_CHRONOLOGY(...) method to check if an OffsetDateTime is either before, after or equal to another OffsetDateTime
+
+```
+Name        : DT_OFFSETDATETIME_CHRONOLOGY
+Version     : 0.1.0
+Overview    : Chronology check of offset datetimes
+Type        : SCALAR
+Variations  : 
+
+	Variation   : DT_OFFSETDATETIME_CHRONOLOGY(baseOffsetDateTime STRUCT<DATETIME_FIELD STRUCT<LOCALDATE_FIELD STRUCT<YEAR_FIELD INT, MONTH_FIELD INT, DAY_FIELD INT>, LOCALTIME_FIELD STRUCT<HOUR_FIELD INT, MINUTE_FIELD INT, SECOND_FIELD INT, NANO_FIELD INT>>, OFFSET_FIELD STRUCT<TOTALSECONDS_FIELD INT>>, offsetDateTime STRUCT<DATETIME_FIELD STRUCT<LOCALDATE_FIELD STRUCT<YEAR_FIELD INT, MONTH_FIELD INT, DAY_FIELD INT>, LOCALTIME_FIELD STRUCT<HOUR_FIELD INT, MINUTE_FIELD INT, SECOND_FIELD INT, NANO_FIELD INT>>, OFFSET_FIELD STRUCT<TOTALSECONDS_FIELD INT>>, chronologyMode VARCHAR)
+	Returns     : BOOLEAN
+	Description : Check if a offset datetime is either before, after or equal to another offset datetime
+	baseOffsetDateTime: the offset datetime to check against
+	offsetDateTime: the offset datetime to check whether it's before, after or equal
+	chronologyMode: the chronologyMode being either: 'IS_BEFORE','IS_AFTER','IS_EQUAL'
+```
+
+#### DT_OFFSETDATETIME_FORMAT(...) method to create a string representation of the OffsetDateTime
+
+```
+Name        : DT_OFFSETDATETIME_FORMAT
+Version     : 0.1.0
+Overview    : Create a string representation of the OffsetDateTime struct
+Type        : SCALAR
+Variations  : 
+
+	Variation   : DT_OFFSETDATETIME_FORMAT(offsetDateTime STRUCT<DATETIME_FIELD STRUCT<LOCALDATE_FIELD STRUCT<YEAR_FIELD INT, MONTH_FIELD INT, DAY_FIELD INT>, LOCALTIME_FIELD STRUCT<HOUR_FIELD INT, MINUTE_FIELD INT, SECOND_FIELD INT, NANO_FIELD INT>>, OFFSET_FIELD STRUCT<TOTALSECONDS_FIELD INT>>, format VARCHAR)
+	Returns     : VARCHAR
+	Description : Create a string representation of the OffsetDateTime struct using the specified java.time.format.DateTimeFormatter format string
+	offsetDateTime: the OffsetDateTime struct to create a string representation for
+	format      : the java.time.format.DateTimeFormatter format string
+
+	Variation   : DT_OFFSETDATETIME_FORMAT(offsetDateTime STRUCT<DATETIME_FIELD STRUCT<LOCALDATE_FIELD STRUCT<YEAR_FIELD INT, MONTH_FIELD INT, DAY_FIELD INT>, LOCALTIME_FIELD STRUCT<HOUR_FIELD INT, MINUTE_FIELD INT, SECOND_FIELD INT, NANO_FIELD INT>>, OFFSET_FIELD STRUCT<TOTALSECONDS_FIELD INT>>)
+	Returns     : VARCHAR
+	Description : Create a string representation of the OffsetDateTime struct using the java.time.format.DateTimeFormatter#ISO_OFFSET_DATE_TIME format
+	offsetDateTime: the OffsetDateTime struct to create a string representation for
+```
+
+#### DT_OFFSETDATETIME_MINUS(...) method to subtract either a Period and/or Duration or separate date and/or time components from an OffsetDateTime
+
+```
+Name        : DT_OFFSETDATETIME_MINUS
+Version     : 0.1.0
+Overview    : Subtract from offset datetimes
+Type        : SCALAR
+Variations  : 
+
+	Variation   : DT_OFFSETDATETIME_MINUS(baseOffsetDateTime STRUCT<DATETIME_FIELD STRUCT<LOCALDATE_FIELD STRUCT<YEAR_FIELD INT, MONTH_FIELD INT, DAY_FIELD INT>, LOCALTIME_FIELD STRUCT<HOUR_FIELD INT, MINUTE_FIELD INT, SECOND_FIELD INT, NANO_FIELD INT>>, OFFSET_FIELD STRUCT<TOTALSECONDS_FIELD INT>>, subtractYears INT, subtractMonths INT, subtractDays INT, subtractHours INT, subtractMinutes INT, subtractSeconds INT, subtractNanos INT)
+	Returns     : STRUCT<DATETIME_FIELD STRUCT<LOCALDATE_FIELD STRUCT<YEAR_FIELD INT, MONTH_FIELD INT, DAY_FIELD INT>, LOCALTIME_FIELD STRUCT<HOUR_FIELD INT, MINUTE_FIELD INT, SECOND_FIELD INT, NANO_FIELD INT>>, OFFSET_FIELD STRUCT<TOTALSECONDS_FIELD INT>>
+	Description : Subtract years, months, days, hours, minutes, seconds and nanos from an offset datetime
+	baseOffsetDateTime: the offset datetime to subtract from
+	subtractYears: the year part to subtract
+	subtractMonths: the month part to subtract
+	subtractDays: the day part to subtract
+	subtractHours: the hour part to subtract
+	subtractMinutes: the minute part to subtract
+	subtractSeconds: the second part to subtract
+	subtractNanos: the nano part to subtract
+
+	Variation   : DT_OFFSETDATETIME_MINUS(baseOffsetDateTime STRUCT<DATETIME_FIELD STRUCT<LOCALDATE_FIELD STRUCT<YEAR_FIELD INT, MONTH_FIELD INT, DAY_FIELD INT>, LOCALTIME_FIELD STRUCT<HOUR_FIELD INT, MINUTE_FIELD INT, SECOND_FIELD INT, NANO_FIELD INT>>, OFFSET_FIELD STRUCT<TOTALSECONDS_FIELD INT>>, period STRUCT<YEARS_FIELD INT, MONTHS_FIELD INT, DAYS_FIELD INT>, duration STRUCT<SECONDS_FIELD BIGINT, NANOS_FIELD INT>)
+	Returns     : STRUCT<DATETIME_FIELD STRUCT<LOCALDATE_FIELD STRUCT<YEAR_FIELD INT, MONTH_FIELD INT, DAY_FIELD INT>, LOCALTIME_FIELD STRUCT<HOUR_FIELD INT, MINUTE_FIELD INT, SECOND_FIELD INT, NANO_FIELD INT>>, OFFSET_FIELD STRUCT<TOTALSECONDS_FIELD INT>>
+	Description : Subtract a period and/or duration from an offset datetime
+	baseOffsetDateTime: the offset datetime to subtract from
+	period      : the period to subtract (use the empty/zero Period in case only a duration should be subtracted)
+	duration    : the duration to subtract (use the empty/zero Duration in case only a period should be subtracted)
+```
+
+#### DT_OFFSETDATETIME_PLUS(...) method to add either a Period and/or Duration or separate date and/or time components to an OffsetDateTime
+
+```
+Name        : DT_OFFSETDATETIME_PLUS
+Version     : 0.1.0
+Overview    : Add to offset datetimes
+Type        : SCALAR
+Variations  : 
+
+	Variation   : DT_OFFSETDATETIME_PLUS(baseOffsetDateTime STRUCT<DATETIME_FIELD STRUCT<LOCALDATE_FIELD STRUCT<YEAR_FIELD INT, MONTH_FIELD INT, DAY_FIELD INT>, LOCALTIME_FIELD STRUCT<HOUR_FIELD INT, MINUTE_FIELD INT, SECOND_FIELD INT, NANO_FIELD INT>>, OFFSET_FIELD STRUCT<TOTALSECONDS_FIELD INT>>, addYears INT, addMonths INT, addDays INT, addHours INT, addMinutes INT, addSeconds INT, addNanos INT)
+	Returns     : STRUCT<DATETIME_FIELD STRUCT<LOCALDATE_FIELD STRUCT<YEAR_FIELD INT, MONTH_FIELD INT, DAY_FIELD INT>, LOCALTIME_FIELD STRUCT<HOUR_FIELD INT, MINUTE_FIELD INT, SECOND_FIELD INT, NANO_FIELD INT>>, OFFSET_FIELD STRUCT<TOTALSECONDS_FIELD INT>>
+	Description : Add years, months, days, hours, minutes, seconds and nanos to an offset datetime
+	baseOffsetDateTime: the offset datetime to add to
+	addYears    : the year part to add
+	addMonths   : the month part to add
+	addDays     : the day part to add
+	addHours    : the hour part to add
+	addMinutes  : the minute part to add
+	addSeconds  : the second part to add
+	addNanos    : the nano part to add
+
+	Variation   : DT_OFFSETDATETIME_PLUS(baseOffsetDateTime STRUCT<DATETIME_FIELD STRUCT<LOCALDATE_FIELD STRUCT<YEAR_FIELD INT, MONTH_FIELD INT, DAY_FIELD INT>, LOCALTIME_FIELD STRUCT<HOUR_FIELD INT, MINUTE_FIELD INT, SECOND_FIELD INT, NANO_FIELD INT>>, OFFSET_FIELD STRUCT<TOTALSECONDS_FIELD INT>>, period STRUCT<YEARS_FIELD INT, MONTHS_FIELD INT, DAYS_FIELD INT>, duration STRUCT<SECONDS_FIELD BIGINT, NANOS_FIELD INT>)
+	Returns     : STRUCT<DATETIME_FIELD STRUCT<LOCALDATE_FIELD STRUCT<YEAR_FIELD INT, MONTH_FIELD INT, DAY_FIELD INT>, LOCALTIME_FIELD STRUCT<HOUR_FIELD INT, MINUTE_FIELD INT, SECOND_FIELD INT, NANO_FIELD INT>>, OFFSET_FIELD STRUCT<TOTALSECONDS_FIELD INT>>
+	Description : Add a period and/or duration to an offset datetime
+	baseOffsetDateTime: the offset datetime to add to
+	period      : the period to add (use the empty/zero Period in case only a duration should be added)
+	duration    : the duration to add (use the empty/zero Duration in case only a period should be added)
+```
+
+### **ZonedDateTime related UDFs**
+
+#### DT_ZONEDDATETIME(...) factory functions to create ZonedDateTime STRUCTs
+
+```
+Name        : DT_ZONEDDATETIME
+Version     : 0.1.0
+Overview    : Factory functions for ZonedDateTime struct creation
+Type        : SCALAR
+Variations  : 
+
+	Variation   : DT_ZONEDDATETIME(text VARCHAR, format VARCHAR)
+	Returns     : STRUCT<DATETIME_FIELD STRUCT<LOCALDATE_FIELD STRUCT<YEAR_FIELD INT, MONTH_FIELD INT, DAY_FIELD INT>, LOCALTIME_FIELD STRUCT<HOUR_FIELD INT, MINUTE_FIELD INT, SECOND_FIELD INT, NANO_FIELD INT>>, OFFSET_FIELD STRUCT<TOTALSECONDS_FIELD INT>, ZONE_FIELD STRUCT<ID_FIELD VARCHAR>>
+	Description : Create an ZonedDateTime struct from its string representation using the specified java.time.format.DateTimeFormatter format string
+	text        : the string representation of the ZonedDateTime
+	format      : the specified java.time.format.DateTimeFormatter format string
+
+	Variation   : DT_ZONEDDATETIME()
+	Returns     : STRUCT<DATETIME_FIELD STRUCT<LOCALDATE_FIELD STRUCT<YEAR_FIELD INT, MONTH_FIELD INT, DAY_FIELD INT>, LOCALTIME_FIELD STRUCT<HOUR_FIELD INT, MINUTE_FIELD INT, SECOND_FIELD INT, NANO_FIELD INT>>, OFFSET_FIELD STRUCT<TOTALSECONDS_FIELD INT>, ZONE_FIELD STRUCT<ID_FIELD VARCHAR>>
+	Description : Create a ZonedDateTime struct based on the system clock's current date-time and its zone and offset according to the default time-zone.
+
+	Variation   : DT_ZONEDDATETIME(text VARCHAR)
+	Returns     : STRUCT<DATETIME_FIELD STRUCT<LOCALDATE_FIELD STRUCT<YEAR_FIELD INT, MONTH_FIELD INT, DAY_FIELD INT>, LOCALTIME_FIELD STRUCT<HOUR_FIELD INT, MINUTE_FIELD INT, SECOND_FIELD INT, NANO_FIELD INT>>, OFFSET_FIELD STRUCT<TOTALSECONDS_FIELD INT>, ZONE_FIELD STRUCT<ID_FIELD VARCHAR>>
+	Description : Create a ZonedDateTime struct from its string representation using java.time.format.DateTimeFormatter#ISO_ZONED_DATE_TIME
+	text        : the string representation of the ZonedDateTime
+
+	Variation   : DT_ZONEDDATETIME(localDatetime STRUCT<LOCALDATE_FIELD STRUCT<YEAR_FIELD INT, MONTH_FIELD INT, DAY_FIELD INT>, LOCALTIME_FIELD STRUCT<HOUR_FIELD INT, MINUTE_FIELD INT, SECOND_FIELD INT, NANO_FIELD INT>>, zoneId STRUCT<ID_FIELD VARCHAR>, zoneOffset STRUCT<TOTALSECONDS_FIELD INT>)
+	Returns     : STRUCT<DATETIME_FIELD STRUCT<LOCALDATE_FIELD STRUCT<YEAR_FIELD INT, MONTH_FIELD INT, DAY_FIELD INT>, LOCALTIME_FIELD STRUCT<HOUR_FIELD INT, MINUTE_FIELD INT, SECOND_FIELD INT, NANO_FIELD INT>>, OFFSET_FIELD STRUCT<TOTALSECONDS_FIELD INT>, ZONE_FIELD STRUCT<ID_FIELD VARCHAR>>
+	Description : Create a ZonedDateTime struct based on given LocalDateTime, ZoneId and ZoneOffset structs.
+	localDatetime: the LocalDateTime struct for the ZonedDateTime
+	zoneId      : the ZoneId struct for the ZonedDateTime
+	zoneOffset  : the ZoneOffset struct for the ZonedDateTime
+
+	Variation   : DT_ZONEDDATETIME(zoneId STRUCT<ID_FIELD VARCHAR>)
+	Returns     : STRUCT<DATETIME_FIELD STRUCT<LOCALDATE_FIELD STRUCT<YEAR_FIELD INT, MONTH_FIELD INT, DAY_FIELD INT>, LOCALTIME_FIELD STRUCT<HOUR_FIELD INT, MINUTE_FIELD INT, SECOND_FIELD INT, NANO_FIELD INT>>, OFFSET_FIELD STRUCT<TOTALSECONDS_FIELD INT>, ZONE_FIELD STRUCT<ID_FIELD VARCHAR>>
+	Description : Create a ZonedDateTime struct based on the system clock's current date-time where zone and offset are based on the specified time-zone.
+	zoneId      : the ZoneId struct for the ZonedDateTime
+
+	Variation   : DT_ZONEDDATETIME(localDatetime STRUCT<LOCALDATE_FIELD STRUCT<YEAR_FIELD INT, MONTH_FIELD INT, DAY_FIELD INT>, LOCALTIME_FIELD STRUCT<HOUR_FIELD INT, MINUTE_FIELD INT, SECOND_FIELD INT, NANO_FIELD INT>>, zoneId STRUCT<ID_FIELD VARCHAR>)
+	Returns     : STRUCT<DATETIME_FIELD STRUCT<LOCALDATE_FIELD STRUCT<YEAR_FIELD INT, MONTH_FIELD INT, DAY_FIELD INT>, LOCALTIME_FIELD STRUCT<HOUR_FIELD INT, MINUTE_FIELD INT, SECOND_FIELD INT, NANO_FIELD INT>>, OFFSET_FIELD STRUCT<TOTALSECONDS_FIELD INT>, ZONE_FIELD STRUCT<ID_FIELD VARCHAR>>
+	Description : Create a ZonedDateTime struct based on given LocalDateTime and ZoneId structs.
+	localDatetime: the LocalDateTime struct for the ZonedDateTime
+	zoneId      : the ZoneId struct for the ZonedDateTime
+```
+
+#### DT_ZONEDDATETIME_CHRONOLOGY(...) method to check if a ZonedDateTime is either before, after or equal to another ZonedDateTime
+
+```
+Name        : DT_ZONEDDATETIME_CHRONOLOGY
+Version     : 0.1.0
+Overview    : Chronology check of zoned datetimes
+Type        : SCALAR
+Variations  : 
+
+	Variation   : DT_ZONEDDATETIME_CHRONOLOGY(baseZonedDateTime STRUCT<DATETIME_FIELD STRUCT<LOCALDATE_FIELD STRUCT<YEAR_FIELD INT, MONTH_FIELD INT, DAY_FIELD INT>, LOCALTIME_FIELD STRUCT<HOUR_FIELD INT, MINUTE_FIELD INT, SECOND_FIELD INT, NANO_FIELD INT>>, OFFSET_FIELD STRUCT<TOTALSECONDS_FIELD INT>, ZONE_FIELD STRUCT<ID_FIELD VARCHAR>>, zonedDateTime STRUCT<DATETIME_FIELD STRUCT<LOCALDATE_FIELD STRUCT<YEAR_FIELD INT, MONTH_FIELD INT, DAY_FIELD INT>, LOCALTIME_FIELD STRUCT<HOUR_FIELD INT, MINUTE_FIELD INT, SECOND_FIELD INT, NANO_FIELD INT>>, OFFSET_FIELD STRUCT<TOTALSECONDS_FIELD INT>, ZONE_FIELD STRUCT<ID_FIELD VARCHAR>>, chronologyMode VARCHAR)
+	Returns     : BOOLEAN
+	Description : Check if a zoned datetime is either before, after or equal to another zoned datetime
+	baseZonedDateTime: the zoned datetime to check against
+	zonedDateTime: the zoned datetime to check whether it's before, after or equal
+	chronologyMode: the chronologyMode being either: 'IS_BEFORE','IS_AFTER','IS_EQUAL'
+```
+
+#### DT_ZONEDDATETIME_FORMAT(...) method to create a string representation of the ZonedDateTime
+
+```
+Name        : DT_ZONEDDATETIME_FORMAT
+Version     : 0.1.0
+Overview    : Create a string representation of the ZonedDateTime struct
+Type        : SCALAR
+Variations  : 
+
+	Variation   : DT_ZONEDDATETIME_FORMAT(zonedDateTime STRUCT<DATETIME_FIELD STRUCT<LOCALDATE_FIELD STRUCT<YEAR_FIELD INT, MONTH_FIELD INT, DAY_FIELD INT>, LOCALTIME_FIELD STRUCT<HOUR_FIELD INT, MINUTE_FIELD INT, SECOND_FIELD INT, NANO_FIELD INT>>, OFFSET_FIELD STRUCT<TOTALSECONDS_FIELD INT>, ZONE_FIELD STRUCT<ID_FIELD VARCHAR>>)
+	Returns     : VARCHAR
+	Description : Create a string representation of the ZonedDateTime struct using the java.time.format.DateTimeFormatter#ISO_ZONED_DATE_TIME format
+	zonedDateTime: the ZonedDateTime struct to create a string representation for
+
+	Variation   : DT_ZONEDDATETIME_FORMAT(zonedDateTime STRUCT<DATETIME_FIELD STRUCT<LOCALDATE_FIELD STRUCT<YEAR_FIELD INT, MONTH_FIELD INT, DAY_FIELD INT>, LOCALTIME_FIELD STRUCT<HOUR_FIELD INT, MINUTE_FIELD INT, SECOND_FIELD INT, NANO_FIELD INT>>, OFFSET_FIELD STRUCT<TOTALSECONDS_FIELD INT>, ZONE_FIELD STRUCT<ID_FIELD VARCHAR>>, format VARCHAR)
+	Returns     : VARCHAR
+	Description : Create a string representation of the ZonedDateTime struct using the specified java.time.format.DateTimeFormatter format string
+	zonedDateTime: the ZonedDateTime struct to create a string representation for
+	format      : the java.time.format.DateTimeFormatter format string
+```
+
+#### DT_ZONEDDATETIME_MINUS(...) method to subtract either a Period and/or Duration or separate date and/or time components from a ZonedDateTime
+
+```
+Name        : DT_ZONEDDATETIME_MINUS
+Version     : 0.1.0
+Overview    : Subtract from zoned datetimes
+Type        : SCALAR
+Variations  : 
+
+	Variation   : DT_ZONEDDATETIME_MINUS(baseZonedDateTime STRUCT<DATETIME_FIELD STRUCT<LOCALDATE_FIELD STRUCT<YEAR_FIELD INT, MONTH_FIELD INT, DAY_FIELD INT>, LOCALTIME_FIELD STRUCT<HOUR_FIELD INT, MINUTE_FIELD INT, SECOND_FIELD INT, NANO_FIELD INT>>, OFFSET_FIELD STRUCT<TOTALSECONDS_FIELD INT>, ZONE_FIELD STRUCT<ID_FIELD VARCHAR>>, subtractYears INT, subtractMonths INT, subtractDays INT, subtractHours INT, subtractMinutes INT, subtractSeconds INT, subtractNanos INT)
+	Returns     : STRUCT<DATETIME_FIELD STRUCT<LOCALDATE_FIELD STRUCT<YEAR_FIELD INT, MONTH_FIELD INT, DAY_FIELD INT>, LOCALTIME_FIELD STRUCT<HOUR_FIELD INT, MINUTE_FIELD INT, SECOND_FIELD INT, NANO_FIELD INT>>, OFFSET_FIELD STRUCT<TOTALSECONDS_FIELD INT>, ZONE_FIELD STRUCT<ID_FIELD VARCHAR>>
+	Description : Subtract years, months, days, hours, minutes, seconds and nanos from an zoned datetime
+	baseZonedDateTime: the zoned datetime to subtract from
+	subtractYears: the year part to subtract
+	subtractMonths: the month part to subtract
+	subtractDays: the day part to subtract
+	subtractHours: the hour part to subtract
+	subtractMinutes: the minute part to subtract
+	subtractSeconds: the second part to subtract
+	subtractNanos: the nano part to subtract
+
+	Variation   : DT_ZONEDDATETIME_MINUS(baseZonedDateTime STRUCT<DATETIME_FIELD STRUCT<LOCALDATE_FIELD STRUCT<YEAR_FIELD INT, MONTH_FIELD INT, DAY_FIELD INT>, LOCALTIME_FIELD STRUCT<HOUR_FIELD INT, MINUTE_FIELD INT, SECOND_FIELD INT, NANO_FIELD INT>>, OFFSET_FIELD STRUCT<TOTALSECONDS_FIELD INT>, ZONE_FIELD STRUCT<ID_FIELD VARCHAR>>, period STRUCT<YEARS_FIELD INT, MONTHS_FIELD INT, DAYS_FIELD INT>, duration STRUCT<SECONDS_FIELD BIGINT, NANOS_FIELD INT>)
+	Returns     : STRUCT<DATETIME_FIELD STRUCT<LOCALDATE_FIELD STRUCT<YEAR_FIELD INT, MONTH_FIELD INT, DAY_FIELD INT>, LOCALTIME_FIELD STRUCT<HOUR_FIELD INT, MINUTE_FIELD INT, SECOND_FIELD INT, NANO_FIELD INT>>, OFFSET_FIELD STRUCT<TOTALSECONDS_FIELD INT>, ZONE_FIELD STRUCT<ID_FIELD VARCHAR>>
+	Description : Subtract a period and/or duration from an zoned datetime
+	baseZonedDateTime: the zoned datetime to subtract from
+	period      : the period to subtract (use the empty/zero Period in case only a duration should be subtracted)
+	duration    : the duration to subtract (use the empty/zero Duration in case only a period should be subtracted)
+```
+
+#### DT_ZONEDDATETIME_PLUS(...) method to add either a Period and/or Duration or separate date and/or time components to a ZonedDateTime
+
+```
+Name        : DT_ZONEDDATETIME_PLUS
+Version     : 0.1.0
+Overview    : Add to zoned datetimes
+Type        : SCALAR
+Variations  : 
+
+	Variation   : DT_ZONEDDATETIME_PLUS(baseZonedDateTime STRUCT<DATETIME_FIELD STRUCT<LOCALDATE_FIELD STRUCT<YEAR_FIELD INT, MONTH_FIELD INT, DAY_FIELD INT>, LOCALTIME_FIELD STRUCT<HOUR_FIELD INT, MINUTE_FIELD INT, SECOND_FIELD INT, NANO_FIELD INT>>, OFFSET_FIELD STRUCT<TOTALSECONDS_FIELD INT>, ZONE_FIELD STRUCT<ID_FIELD VARCHAR>>, addYears INT, addMonths INT, addDays INT, addHours INT, addMinutes INT, addSeconds INT, addNanos INT)
+	Returns     : STRUCT<DATETIME_FIELD STRUCT<LOCALDATE_FIELD STRUCT<YEAR_FIELD INT, MONTH_FIELD INT, DAY_FIELD INT>, LOCALTIME_FIELD STRUCT<HOUR_FIELD INT, MINUTE_FIELD INT, SECOND_FIELD INT, NANO_FIELD INT>>, OFFSET_FIELD STRUCT<TOTALSECONDS_FIELD INT>, ZONE_FIELD STRUCT<ID_FIELD VARCHAR>>
+	Description : Add years, months, days, hours, minutes, seconds and nanos to an zoned datetime
+	baseZonedDateTime: the zoned datetime to add to
+	addYears    : the year part to add
+	addMonths   : the month part to add
+	addDays     : the day part to add
+	addHours    : the hour part to add
+	addMinutes  : the minute part to add
+	addSeconds  : the second part to add
+	addNanos    : the nano part to add
+
+	Variation   : DT_ZONEDDATETIME_PLUS(baseZonedDateTime STRUCT<DATETIME_FIELD STRUCT<LOCALDATE_FIELD STRUCT<YEAR_FIELD INT, MONTH_FIELD INT, DAY_FIELD INT>, LOCALTIME_FIELD STRUCT<HOUR_FIELD INT, MINUTE_FIELD INT, SECOND_FIELD INT, NANO_FIELD INT>>, OFFSET_FIELD STRUCT<TOTALSECONDS_FIELD INT>, ZONE_FIELD STRUCT<ID_FIELD VARCHAR>>, period STRUCT<YEARS_FIELD INT, MONTHS_FIELD INT, DAYS_FIELD INT>, duration STRUCT<SECONDS_FIELD BIGINT, NANOS_FIELD INT>)
+	Returns     : STRUCT<DATETIME_FIELD STRUCT<LOCALDATE_FIELD STRUCT<YEAR_FIELD INT, MONTH_FIELD INT, DAY_FIELD INT>, LOCALTIME_FIELD STRUCT<HOUR_FIELD INT, MINUTE_FIELD INT, SECOND_FIELD INT, NANO_FIELD INT>>, OFFSET_FIELD STRUCT<TOTALSECONDS_FIELD INT>, ZONE_FIELD STRUCT<ID_FIELD VARCHAR>>
+	Description : Add a period and/or duration to an zoned datetime
+	baseZonedDateTime: the zoned datetime to add to
+	period      : the period to add (use the empty/zero Period in case only a duration should be added)
+	duration    : the duration to add (use the empty/zero Duration in case only a period should be added)
+```
+
 ## **Installation / Deployment**
 
-1. You can either build the Maven project from sources or download the latest build as self-contained jar from [here](https://drive.google.com/file/d/1u0vpL_N6L-HnlrO0r02EDRJg6jAsbP55/view?usp=sharing).
-2. Move the _datetime-functions-0.1.0.jar_ file into a folder of your ksqlDB installation that is configured to load custom functions from during server bootstrap.
+1. You can either build the Maven project from sources or download the latest build as self-contained jar from [here](https://drive.google.com/file/d/1uOYWeuV01ZIf_6yuYjzgJM31OGtEZrt2/view?usp=sharing).
+2. Move the _datetime-functions-0.2.0.jar_ file into a folder of your ksqlDB installation that is configured to load custom functions from during server bootstrap.
 3. (Re)Start your ksqlDB server instance(s) to make it pick up and load the date/time functions.
 4. Verify if the deployment was successful by opening a ksqlDB CLI session and running SHOW FUNCTIONS; which should amongst all other available functions list the following date/time-related UDFs:
 
 ```
- Function Name               | Type      
---------------------------------------
+ Function Name                | Category           
+---------------------------------------------------
  ...
- DT_DURATION                 | SCALAR    
- DT_DURATION_BETWEEN         | SCALAR    
- DT_DURATION_DIVIDE          | SCALAR    
- DT_DURATION_MINUS           | SCALAR    
- DT_DURATION_MULTIPLY        | SCALAR    
- DT_DURATION_PLUS            | SCALAR    
- DT_DURATION_STRINGIFY       | SCALAR    
- DT_INSTANT                  | SCALAR    
- DT_INSTANT_CHRONOLOGY       | SCALAR    
- DT_INSTANT_MINUS            | SCALAR    
- DT_INSTANT_PLUS             | SCALAR    
- DT_INSTANT_STRINGIFY        | SCALAR    
- DT_LOCALDATE                | SCALAR    
- DT_LOCALDATETIME            | SCALAR    
- DT_LOCALDATETIME_CHRONOLOGY | SCALAR    
- DT_LOCALDATETIME_FORMAT     | SCALAR    
- DT_LOCALDATETIME_MINUS      | SCALAR    
- DT_LOCALDATETIME_PLUS       | SCALAR    
- DT_LOCALDATE_CHRONOLOGY     | SCALAR    
- DT_LOCALDATE_FORMAT         | SCALAR    
- DT_LOCALDATE_MINUS          | SCALAR    
- DT_LOCALDATE_PLUS           | SCALAR    
- DT_LOCALTIME                | SCALAR    
- DT_LOCALTIME_CHRONOLOGY     | SCALAR    
- DT_LOCALTIME_FORMAT         | SCALAR    
- DT_LOCALTIME_MINUS          | SCALAR    
- DT_LOCALTIME_PLUS           | SCALAR    
- DT_PERIOD                   | SCALAR    
- DT_PERIOD_BETWEEN           | SCALAR    
- DT_PERIOD_MINUS             | SCALAR    
- DT_PERIOD_MULTIPLY          | SCALAR    
- DT_PERIOD_NORMALIZE         | SCALAR    
- DT_PERIOD_PLUS              | SCALAR    
- DT_PERIOD_STRINGIFY         | SCALAR
- ... 
---------------------------------------
+ DT_DURATION                  | OTHER              
+ DT_DURATION_BETWEEN          | OTHER              
+ DT_DURATION_DIVIDE           | OTHER              
+ DT_DURATION_MINUS            | OTHER              
+ DT_DURATION_MULTIPLY         | OTHER              
+ DT_DURATION_PLUS             | OTHER              
+ DT_DURATION_STRINGIFY        | OTHER              
+ DT_INSTANT                   | OTHER              
+ DT_INSTANT_CHRONOLOGY        | OTHER              
+ DT_INSTANT_MINUS             | OTHER              
+ DT_INSTANT_PLUS              | OTHER              
+ DT_INSTANT_STRINGIFY         | OTHER              
+ DT_LOCALDATE                 | OTHER              
+ DT_LOCALDATETIME             | OTHER              
+ DT_LOCALDATETIME_CHRONOLOGY  | OTHER              
+ DT_LOCALDATETIME_FORMAT      | OTHER              
+ DT_LOCALDATETIME_MINUS       | OTHER              
+ DT_LOCALDATETIME_PLUS        | OTHER              
+ DT_LOCALDATE_CHRONOLOGY      | OTHER              
+ DT_LOCALDATE_FORMAT          | OTHER              
+ DT_LOCALDATE_MINUS           | OTHER              
+ DT_LOCALDATE_PLUS            | OTHER              
+ DT_LOCALTIME                 | OTHER              
+ DT_LOCALTIME_CHRONOLOGY      | OTHER              
+ DT_LOCALTIME_FORMAT          | OTHER              
+ DT_LOCALTIME_MINUS           | OTHER              
+ DT_LOCALTIME_PLUS            | OTHER              
+ DT_OFFSETDATETIME            | OTHER              
+ DT_OFFSETDATETIME_CHRONOLOGY | OTHER              
+ DT_OFFSETDATETIME_FORMAT     | OTHER              
+ DT_OFFSETDATETIME_MINUS      | OTHER              
+ DT_OFFSETDATETIME_PLUS       | OTHER              
+ DT_PERIOD                    | OTHER              
+ DT_PERIOD_BETWEEN            | OTHER              
+ DT_PERIOD_MINUS              | OTHER              
+ DT_PERIOD_MULTIPLY           | OTHER              
+ DT_PERIOD_NORMALIZE          | OTHER              
+ DT_PERIOD_PLUS               | OTHER              
+ DT_PERIOD_STRINGIFY          | OTHER              
+ DT_ZONEDDATETIME             | OTHER              
+ DT_ZONEDDATETIME_CHRONOLOGY  | OTHER              
+ DT_ZONEDDATETIME_FORMAT      | OTHER              
+ DT_ZONEDDATETIME_MINUS       | OTHER              
+ DT_ZONEDDATETIME_PLUS        | OTHER              
+ DT_ZONEID                    | OTHER              
+ DT_ZONEOFFSET                | OTHER              
+ DT_ZONEOFFSET_STRINGIFY      | OTHER
+ ...
 ```
 
 ### **HAVE FUN working with 🗓 date & time 🕑 in 🚀ksqlDB🚀**

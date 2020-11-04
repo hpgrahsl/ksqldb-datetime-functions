@@ -22,14 +22,14 @@
 
     <groupId>com.github.hpgrahsl.ksqldb.functions</groupId>
     <artifactId>datetime-functions</artifactId>
-    <version>0.1.0</version>
+    <version>0.2.0</version>
     <packaging>jar</packaging>
 
     <name>Utility functions for date time operations within ksqlDB</name>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <ksql.version>5.4.2</ksql.version>
+        <ksqldb.version>5.5.1</ksqldb.version>
         <kafka.connect.version>5.5.1-ce</kafka.connect.version>
         <junit.jupiter.version>5.6.1</junit.jupiter.version>
         <javax.json.version>1.1.4</javax.json.version>
@@ -98,8 +98,8 @@
         <!-- KSQL dependencies -->
         <dependency>
             <groupId>io.confluent.ksql</groupId>
-            <artifactId>ksql-udf</artifactId>
-            <version>${ksql.version}</version>
+            <artifactId>ksqldb-udf</artifactId>
+            <version>${ksqldb.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.kafka</groupId>

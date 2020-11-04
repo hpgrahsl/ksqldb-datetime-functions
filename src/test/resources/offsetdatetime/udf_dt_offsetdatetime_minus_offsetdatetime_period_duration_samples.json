@@ -1,0 +1,196 @@
+[
+  {
+    "param_baseOffsetDateTime": {
+      "datetime_field": {
+        "localdate_field": {
+          "year_field": 2020,
+          "month_field": 6,
+          "day_field": 30
+        },
+        "localtime_field": {
+          "hour_field": 9,
+          "minute_field": 9,
+          "second_field": 9,
+          "nano_field": 0
+        }
+      },
+      "offset_field": {
+        "totalseconds_field": 0
+      }
+    },
+    "param_period": {
+      "years_field": 0,
+      "months_field": 0,
+      "days_field": 0
+    },
+    "param_duration": {
+      "seconds_field": 0,
+      "nanos_field": 0
+    },
+    "result": {
+      "datetime_field": {
+        "localdate_field": {
+          "year_field": 2020,
+          "month_field": 6,
+          "day_field": 30
+        },
+        "localtime_field": {
+          "hour_field": 9,
+          "minute_field": 9,
+          "second_field": 9,
+          "nano_field": 0
+        }
+      },
+      "offset_field": {
+        "totalseconds_field": 0
+      }
+    }
+  },
+  {
+    "param_baseOffsetDateTime": {
+      "datetime_field": {
+        "localdate_field": {
+          "year_field": 2020,
+          "month_field": 6,
+          "day_field": 30
+        },
+        "localtime_field": {
+          "hour_field": 9,
+          "minute_field": 9,
+          "second_field": 9,
+          "nano_field": 0
+        }
+      },
+      "offset_field": {
+        "totalseconds_field": 7200
+      }
+    },
+    "param_period": {
+      "years_field": 20,
+      "months_field": 5,
+      "days_field": 29
+    },
+    "param_duration": {
+      "seconds_field": 0,
+      "nanos_field": 0
+    },
+    "result": {
+      "datetime_field": {
+        "localdate_field": {
+          "year_field": 2000,
+          "month_field": 1,
+          "day_field": 1
+        },
+        "localtime_field": {
+          "hour_field": 9,
+          "minute_field": 9,
+          "second_field": 9,
+          "nano_field": 0
+        }
+      },
+      "offset_field": {
+        "totalseconds_field": 7200
+      }
+    }
+  },
+  {
+    "param_baseOffsetDateTime": {
+      "datetime_field": {
+        "localdate_field": {
+          "year_field": 2020,
+          "month_field": 6,
+          "day_field": 30
+        },
+        "localtime_field": {
+          "hour_field": 9,
+          "minute_field": 9,
+          "second_field": 9,
+          "nano_field": 0
+        }
+      },
+      "offset_field": {
+        "totalseconds_field": -3600
+      }
+    },
+    "param_period": {
+      "years_field": 0,
+      "months_field": 0,
+      "days_field": 0
+    },
+    "param_duration": {
+      "seconds_field": 32949,
+      "nanos_field": 0
+    },
+    "result": {
+      "datetime_field": {
+        "localdate_field": {
+          "year_field": 2020,
+          "month_field": 6,
+          "day_field": 30
+        },
+        "localtime_field": {
+          "hour_field": 0,
+          "minute_field": 0,
+          "second_field": 0,
+          "nano_field": 0
+        }
+      },
+      "offset_field": {
+        "totalseconds_field": -3600
+      }
+    }
+  },
+  {
+    "param_baseOffsetDateTime": {
+      "datetime_field": {
+        "localdate_field": {
+          "year_field": 2020,
+          "month_field": 6,
+          "day_field": 30
+        },
+        "localtime_field": {
+          "hour_field": 9,
+          "minute_field": 9,
+          "second_field": 9,
+          "nano_field": 0
+        }
+      },
+      "offset_field": {
+        "totalseconds_field": 0
+      }
+    },
+    "param_period": {
+      "years_field": 20,
+      "months_field": 5,
+      "days_field": 29
+    },
+    "param_duration": {
+      "seconds_field": 32949,
+      "nanos_field": 0
+    },
+    "result": {
+      "datetime_field": {
+        "localdate_field": {
+          "year_field": 2000,
+          "month_field": 1,
+          "day_field": 1
+        },
+        "localtime_field": {
+          "hour_field": 0,
+          "minute_field": 0,
+          "second_field": 0,
+          "nano_field": 0
+        }
+      },
+      "offset_field": {
+        "totalseconds_field": 0
+      }
+    }
+  },
+  {
+    "param_baseOffsetDateTime": null,
+    "param_period": null,
+    "param_duration": null,
+    "result": null
+  }
+]

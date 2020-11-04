@@ -1,0 +1,48 @@
+[
+  {
+    "param_text": "1970-01-01T00:00:00.000000000+00:00",
+    "result": {
+      "datetime_field": {
+        "localdate_field": {
+          "year_field": 1970,
+          "month_field": 1,
+          "day_field": 1
+        },
+        "localtime_field": {
+          "hour_field": 0,
+          "minute_field": 0,
+          "second_field": 0,
+          "nano_field": 0
+        }
+      },
+      "offset_field": {
+        "totalseconds_field": 0
+      }
+    }
+  },
+  {
+    "param_text": "2020-11-04T06:16:26.000100000-02:00",
+    "result": {
+      "datetime_field": {
+        "localdate_field": {
+          "year_field": 2020,
+          "month_field": 11,
+          "day_field": 4
+        },
+        "localtime_field": {
+          "hour_field": 6,
+          "minute_field": 16,
+          "second_field": 26,
+          "nano_field": 100000
+        }
+      },
+      "offset_field": {
+        "totalseconds_field": -7200
+      }
+    }
+  },
+  {
+    "param_text": null,
+    "result": null
+  }
+]

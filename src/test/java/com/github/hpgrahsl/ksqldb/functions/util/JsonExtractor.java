@@ -129,4 +129,98 @@ public class JsonExtractor {
                 .getJsonNumber("nanos_field").intValue());
   }
 
+  public static Struct toZoneOffsetStruct(JsonObject jo, String fieldName) {
+    return jo.isNull(fieldName) ?
+        null : new Struct(DateTimeSchemas.ZONEOFFSET_SCHEMA)
+        .put("TOTALSECONDS_FIELD",
+            jo.getJsonObject(fieldName)
+                .getJsonNumber("totalseconds_field").intValue());
+  }
+
+  public static Struct toOffsetDateTimeStruct(JsonObject jo, String fieldName) {
+    return jo.isNull(fieldName) ?
+        null : new Struct(DateTimeSchemas.OFFSETDATETIME_SCHEMA)
+        .put("DATETIME_FIELD", new Struct(DateTimeSchemas.LOCALDATETIME_SCHEMA)
+            .put("LOCALDATE_FIELD", new Struct(DateTimeSchemas.LOCALDATE_SCHEMA)
+                .put("YEAR_FIELD",
+                    jo.getJsonObject(fieldName).getJsonObject("datetime_field")
+                        .getJsonObject("localdate_field").getJsonNumber("year_field").intValue())
+                .put("MONTH_FIELD",
+                    jo.getJsonObject(fieldName).getJsonObject("datetime_field")
+                        .getJsonObject("localdate_field").getJsonNumber("month_field").intValue())
+                .put("DAY_FIELD",
+                    jo.getJsonObject(fieldName).getJsonObject("datetime_field")
+                        .getJsonObject("localdate_field").getJsonNumber("day_field").intValue())
+            )
+            .put("LOCALTIME_FIELD", new Struct(DateTimeSchemas.LOCALTIME_SCHEMA)
+                .put("HOUR_FIELD",
+                    jo.getJsonObject(fieldName).getJsonObject("datetime_field")
+                        .getJsonObject("localtime_field").getJsonNumber("hour_field").intValue())
+                .put("MINUTE_FIELD",
+                    jo.getJsonObject(fieldName).getJsonObject("datetime_field")
+                        .getJsonObject("localtime_field").getJsonNumber("minute_field").intValue())
+                .put("SECOND_FIELD",
+                    jo.getJsonObject(fieldName).getJsonObject("datetime_field")
+                        .getJsonObject("localtime_field").getJsonNumber("second_field").intValue())
+                .put("NANO_FIELD",
+                    jo.getJsonObject(fieldName).getJsonObject("datetime_field")
+                        .getJsonObject("localtime_field").getJsonNumber("nano_field").intValue())
+            )
+        )
+        .put("OFFSET_FIELD", new Struct(DateTimeSchemas.ZONEOFFSET_SCHEMA)
+            .put("TOTALSECONDS_FIELD",jo.getJsonObject(fieldName)
+                .getJsonObject("offset_field").getJsonNumber("totalseconds_field").intValue())
+        );
+  }
+
+  public static Struct toZoneIdStruct(JsonObject jo, String fieldName) {
+    return jo.isNull(fieldName) ?
+        null : new Struct(DateTimeSchemas.ZONEID_SCHEMA)
+        .put("ID_FIELD",
+            jo.getJsonObject(fieldName)
+                .getJsonString("id_field").getString());
+  }
+
+  public static Struct toZonedDateTimeStruct(JsonObject jo, String fieldName) {
+    return jo.isNull(fieldName) ?
+        null : new Struct(DateTimeSchemas.ZONEDDATETIME_SCHEMA)
+        .put("DATETIME_FIELD", new Struct(DateTimeSchemas.LOCALDATETIME_SCHEMA)
+            .put("LOCALDATE_FIELD", new Struct(DateTimeSchemas.LOCALDATE_SCHEMA)
+                .put("YEAR_FIELD",
+                    jo.getJsonObject(fieldName).getJsonObject("datetime_field")
+                        .getJsonObject("localdate_field").getJsonNumber("year_field").intValue())
+                .put("MONTH_FIELD",
+                    jo.getJsonObject(fieldName).getJsonObject("datetime_field")
+                        .getJsonObject("localdate_field").getJsonNumber("month_field").intValue())
+                .put("DAY_FIELD",
+                    jo.getJsonObject(fieldName).getJsonObject("datetime_field")
+                        .getJsonObject("localdate_field").getJsonNumber("day_field").intValue())
+            )
+            .put("LOCALTIME_FIELD", new Struct(DateTimeSchemas.LOCALTIME_SCHEMA)
+                .put("HOUR_FIELD",
+                    jo.getJsonObject(fieldName).getJsonObject("datetime_field")
+                        .getJsonObject("localtime_field").getJsonNumber("hour_field").intValue())
+                .put("MINUTE_FIELD",
+                    jo.getJsonObject(fieldName).getJsonObject("datetime_field")
+                        .getJsonObject("localtime_field").getJsonNumber("minute_field").intValue())
+                .put("SECOND_FIELD",
+                    jo.getJsonObject(fieldName).getJsonObject("datetime_field")
+                        .getJsonObject("localtime_field").getJsonNumber("second_field").intValue())
+                .put("NANO_FIELD",
+                    jo.getJsonObject(fieldName).getJsonObject("datetime_field")
+                        .getJsonObject("localtime_field").getJsonNumber("nano_field").intValue())
+            )
+        )
+        .put("OFFSET_FIELD", new Struct(DateTimeSchemas.ZONEOFFSET_SCHEMA)
+            .put("TOTALSECONDS_FIELD",jo.getJsonObject(fieldName)
+                .getJsonObject("offset_field").getJsonNumber("totalseconds_field").intValue())
+        )
+        .put("ZONE_FIELD", new Struct(DateTimeSchemas.ZONEID_SCHEMA)
+            .put("ID_FIELD",jo.getJsonObject(fieldName)
+                .getJsonObject("zone_field").getJsonString("id_field").getString())
+        );
+  }
+
+
+
 }

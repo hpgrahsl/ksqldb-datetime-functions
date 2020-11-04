@@ -1,0 +1,78 @@
+[
+  {
+    "param_offsetDateTime": {
+      "datetime_field": {
+        "localdate_field": {
+          "year_field": 1970,
+          "month_field": 1,
+          "day_field": 1
+        },
+        "localtime_field": {
+          "hour_field": 0,
+          "minute_field": 0,
+          "second_field": 0,
+          "nano_field": 0
+        }
+      },
+      "offset_field": {
+        "totalseconds_field": 0
+      }
+    },
+    "param_pattern": "yyyy-MM-dd'T'HH:mm:ss.SSSSSSSSSZ",
+    "result": "1970-01-01T00:00:00.000000000+0000"
+  },
+  {
+    "param_offsetDateTime": {
+      "datetime_field": {
+        "localdate_field": {
+          "year_field": 2020,
+          "month_field": 11,
+          "day_field": 4
+        },
+        "localtime_field": {
+          "hour_field": 18,
+          "minute_field": 16,
+          "second_field": 26,
+          "nano_field": 360000000
+        }
+      },
+      "offset_field": {
+        "totalseconds_field": -3600
+      }
+    },
+    "param_pattern": "yyyy-MM-dd hh_mm_ss.SSS'@'a/Z",
+    "result": "2020-11-04 06_16_26.360@PM/-0100"
+  },
+  {
+    "param_offsetDateTime": null,
+    "param_pattern": "yyyy-MM-dd'T'HH:mm:ss.SSSSSSSSSZ",
+    "result": null
+  },
+  {
+    "param_offsetDateTime": {
+      "datetime_field": {
+        "localdate_field": {
+          "year_field": 1970,
+          "month_field": 1,
+          "day_field": 1
+        },
+        "localtime_field": {
+          "hour_field": 0,
+          "minute_field": 0,
+          "second_field": 0,
+          "nano_field": 0
+        }
+      },
+      "offset_field": {
+        "totalseconds_field": 0
+      }
+    },
+    "param_pattern": null,
+    "result": null
+  },
+  {
+    "param_offsetDateTime":  null,
+    "param_pattern": null,
+    "result": null
+  }
+]

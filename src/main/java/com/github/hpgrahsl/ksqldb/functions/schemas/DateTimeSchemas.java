@@ -87,4 +87,42 @@ public class DateTimeSchemas {
       "STRUCT<LOCALDATE_FIELD "+LOCALDATE_SCHEMA_DESCRIPTOR+","
             +"LOCALTIME_FIELD "+LOCALTIME_SCHEMA_DESCRIPTOR+">";
 
+  public static final Schema ZONEOFFSET_SCHEMA = SchemaBuilder.struct()
+      .optional()
+      .field("TOTALSECONDS_FIELD", Schema.INT32_SCHEMA)
+      .build();
+
+  public static final String ZONEOFFSET_SCHEMA_DESCRIPTOR =
+      "STRUCT<TOTALSECONDS_FIELD INTEGER>";
+
+  public static final Schema ZONEID_SCHEMA = SchemaBuilder.struct()
+      .optional()
+      .field("ID_FIELD", Schema.STRING_SCHEMA)
+      .build();
+
+  public static final String ZONEID_SCHEMA_DESCRIPTOR =
+      "STRUCT<ID_FIELD VARCHAR>";
+
+  public static final Schema OFFSETDATETIME_SCHEMA = SchemaBuilder.struct()
+      .optional()
+      .field("DATETIME_FIELD",LOCALDATETIME_SCHEMA)
+      .field("OFFSET_FIELD",ZONEOFFSET_SCHEMA)
+      .build();
+
+  public static final String OFFSETDATETIME_SCHEMA_DESCRIPTOR =
+      "STRUCT<DATETIME_FIELD "+LOCALDATETIME_SCHEMA_DESCRIPTOR+","
+          +"OFFSET_FIELD "+ZONEOFFSET_SCHEMA_DESCRIPTOR+">";
+
+  public static final Schema ZONEDDATETIME_SCHEMA = SchemaBuilder.struct()
+      .optional()
+      .field("DATETIME_FIELD",LOCALDATETIME_SCHEMA)
+      .field("OFFSET_FIELD",ZONEOFFSET_SCHEMA)
+      .field("ZONE_FIELD",ZONEID_SCHEMA)
+      .build();
+
+  public static final String ZONEDDATETIME_SCHEMA_DESCRIPTOR =
+      "STRUCT<DATETIME_FIELD "+LOCALDATETIME_SCHEMA_DESCRIPTOR+","
+          +"OFFSET_FIELD "+ZONEOFFSET_SCHEMA_DESCRIPTOR+","
+          +"ZONE_FIELD "+ZONEID_SCHEMA_DESCRIPTOR+">";
+
 }

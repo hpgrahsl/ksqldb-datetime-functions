@@ -23,7 +23,11 @@ import java.time.Instant;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.time.OffsetDateTime;
 import java.time.Period;
+import java.time.ZoneId;
+import java.time.ZoneOffset;
+import java.time.ZonedDateTime;
 import org.apache.kafka.connect.data.Struct;
 
 public class StructsConverter {
@@ -113,6 +117,52 @@ public class StructsConverter {
     return LocalDateTime.of(
         fromLocalDateStruct(s.getStruct("LOCALDATE_FIELD")),
         fromLocalTimeStruct(s.getStruct("LOCALTIME_FIELD"))
+    );
+  }
+
+  public static Struct toZoneOffsetStruct(ZoneOffset zo) {
+    return new Struct(DateTimeSchemas.ZONEOFFSET_SCHEMA)
+        .put(DateTimeSchemas.ZONEOFFSET_SCHEMA.field("TOTALSECONDS_FIELD"),zo.getTotalSeconds());
+  }
+
+  public static ZoneOffset fromZoneOffsetStruct(Struct s) {
+    return ZoneOffset.ofTotalSeconds(s.getInt32("TOTALSECONDS_FIELD"));
+  }
+
+  public static Struct toZoneIdStruct(ZoneId zi) {
+    return new Struct(DateTimeSchemas.ZONEID_SCHEMA)
+        .put(DateTimeSchemas.ZONEID_SCHEMA.field("ID_FIELD"),zi.getId());
+  }
+
+  public static ZoneId fromZoneIdStruct(Struct s) {
+    return ZoneId.of(s.getString("ID_FIELD"));
+  }
+
+  public static Struct toOffsetDateTimeStruct(OffsetDateTime odt) {
+    return new Struct(DateTimeSchemas.OFFSETDATETIME_SCHEMA)
+        .put(DateTimeSchemas.OFFSETDATETIME_SCHEMA.field("DATETIME_FIELD"),toLocalDateTimeStruct(odt.toLocalDateTime()))
+        .put(DateTimeSchemas.OFFSETDATETIME_SCHEMA.field("OFFSET_FIELD"),toZoneOffsetStruct(odt.getOffset()));
+  }
+
+  public static OffsetDateTime fromOffsetDateTimeStruct(Struct s) {
+    return OffsetDateTime.of(
+        fromLocalDateTimeStruct(s.getStruct("DATETIME_FIELD")),
+        fromZoneOffsetStruct(s.getStruct("OFFSET_FIELD"))
+    );
+  }
+
+  public static Struct toZonedDateTimeStruct(ZonedDateTime zdt) {
+    return new Struct(DateTimeSchemas.ZONEDDATETIME_SCHEMA)
+        .put(DateTimeSchemas.ZONEDDATETIME_SCHEMA.field("DATETIME_FIELD"),toLocalDateTimeStruct(zdt.toLocalDateTime()))
+        .put(DateTimeSchemas.ZONEDDATETIME_SCHEMA.field("OFFSET_FIELD"),toZoneOffsetStruct(zdt.getOffset()))
+        .put(DateTimeSchemas.ZONEDDATETIME_SCHEMA.field("ZONE_FIELD"),toZoneIdStruct(zdt.getZone()));
+  }
+
+  public static ZonedDateTime fromZonedDateTimeStruct(Struct s) {
+    return ZonedDateTime.ofLocal(
+        fromLocalDateTimeStruct(s.getStruct("DATETIME_FIELD")),
+        fromZoneIdStruct(s.getStruct("ZONE_FIELD")),
+        fromZoneOffsetStruct(s.getStruct("OFFSET_FIELD"))
     );
   }
 
